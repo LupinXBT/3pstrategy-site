@@ -7,7 +7,7 @@
 <meta name="description" content="What the 3Ps Audit covers and what you get: a boardroom-ready report, a scored risk register and a 30/60/90-day roadmap, in 1-2 weeks.">
 <link rel="canonical" href="https://3pstrategy.io/product">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="theme-color" content="#020617">
+<meta name="theme-color" content="#0A192F">
 <meta name="author" content="Lester Magboo">
 
 <!-- Open Graph / Twitter -->
@@ -31,7 +31,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<!-- TYPEFACE: the stylesheet asks for Proxima Nova first. It is a licensed face and
+     cannot be served from a free CDN — see README section 3 for the two ways to add it.
+     Mulish is loaded here as the fallback and matches Proxima Nova's proportions closely,
+     so the page is correct either way. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap">
 
 <script type="application/ld+json">
 {
@@ -48,9 +52,9 @@
       "areaServed": "Worldwide",
       "audience": {
         "@type": "BusinessAudience",
-        "audienceType": "Founders, venture capital and angel investors, grant programmes, incubators and accelerators"
+        "audienceType": "Founders, venture capital and angel investors, grant programs, incubators and accelerators"
       },
-      "description": "A fixed-scope operational and technical due-diligence audit for tech projects before funding. Product, Process and People are each scored, risk-flagged and translated into prioritised fixes, delivered as a boardroom-ready report, risk register and 30/60/90-day roadmap.",
+      "description": "A fixed-scope operational and technical due-diligence audit for tech projects before funding. Product, Process and People are each scored, risk-flagged and translated into prioritized fixes, delivered as a boardroom-ready report, risk register and 30/60/90-day roadmap.",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "3Ps Audit engagements",
@@ -65,7 +69,7 @@
           },
           {
             "@type": "Offer",
-            "name": "Portfolio screening for funds and programmes"
+            "name": "Portfolio screening for funds and programs"
           },
           {
             "@type": "Offer",
@@ -101,8 +105,8 @@
       "name": "3P Strategy",
       "alternateName": "LupinXBT Tech Solutions",
       "url": "https://3pstrategy.io/",
-      "email": "hello@3pstrategy.io",
-      "description": "Operational and technical due diligence for tech projects, funds and grant programmes, built on the 3Ps framework — Product, Process, People.",
+      "email": "3pstrategy@gmail.com",
+      "description": "Operational and technical due diligence for tech projects, funds and grant programs, built on the 3Ps framework — Product, Process, People.",
       "areaServed": "Worldwide",
       "priceRange": "$$",
       "address": {
@@ -147,32 +151,51 @@
    ========================================================================= */
 
 /* ---------- 1. TOKENS ---------------------------------------------------- */
+/*  BRAND PALETTE — the only four base colors in this site:
+      #0A192F  navy    the ground
+      #708090  slate   structure: rules, borders, outlines (never body text)
+      #C0C0C0  silver  secondary text, links, emphasis
+      #F8F9FA  paper   primary text, and the fill on primary buttons
+    Every value below is one of those four or a tint derived from them by
+    lightening or darkening only. No other hue is introduced, with one
+    documented exception: --danger, because a form error must not be
+    indistinguishable from ordinary text.                                    */
 :root {
-  /* Surface ramp (dark-first; every step tested against --fg) */
-  --bg:            #020617;
-  --bg-alt:        #070D1F;
-  --surface:       #0E1223;
-  --surface-2:     #151B31;
-  --border:        #24304B;
-  --border-strong: #334155;
+  --navy:   #0A192F;
+  --slate:  #708090;
+  --silver: #C0C0C0;
+  --paper:  #F8F9FA;
 
-  /* Text */
-  --fg:            #F8FAFC;   /* 18.4:1 on --bg */
-  --fg-muted:      #A9B6CA;   /* 9.4:1  on --bg  — never lighter than this */
-  --fg-subtle:     #8494AC;   /* 6.2:1  on --bg  — labels only, 14px+ */
+  /* Surfaces — navy lifted in even steps */
+  --bg:            #0A192F;
+  --bg-alt:        #0C1E38;
+  --surface:       #102542;
+  --surface-2:     #163050;
+  --border:        #253B54;
+  --border-strong: #708090;
 
-  /* Brand */
-  --accent:        #38BDF8;   /* 8.8:1 on --bg — accent TEXT + icons */
-  --accent-fill:   #0369A1;   /* 5.9:1 vs #fff — accent BUTTON fills only */
-  --accent-fill-h: #075E8C;
-  --accent-soft:   rgba(56,189,248,.12);
-  --gold:          #E7B44C;   /* credential / proof accents, 9.9:1 on --bg */
-  --danger:        #F87171;
-  --success:       #4ADE80;
+  /* Text — every value checked against --bg */
+  --fg:            #F8F9FA;   /* 16.9:1 */
+  --fg-muted:      #C0C0C0;   /*  9.7:1 */
+  --fg-subtle:     #A3AFBB;   /*  7.3:1 — derived midpoint of slate and silver.
+                                 Plain #708090 is 4.35:1 and fails AA as text,
+                                 so slate is used for structure only.        */
 
-  /* Type */
-  --font: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Emphasis: silver carries accent text, paper carries filled buttons */
+  --accent:        #C0C0C0;
+  --accent-fill:   #F8F9FA;
+  --accent-fill-h: #DDE2E6;
+  --on-accent:     #0A192F;   /* 16.9:1 on --accent-fill */
+  --accent-soft:   rgba(192,192,192,.10);
+  --gold:          #C0C0C0;
+  --danger:        #F0A08C;   /* functional exception, see note above */
+  --success:       #C0C0C0;
+
+  /* Type — Proxima Nova first. See the note in build.py on licensing it;
+     Mulish is the loaded fallback and matches its proportions closely.      */
+  --font: "proxima-nova", "Proxima Nova", "Mulish", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --step--1: clamp(.8125rem, .79rem + .11vw, .875rem);
   --step-0:  clamp(1rem, .97rem + .15vw, 1.0625rem);
   --step-1:  clamp(1.125rem, 1.07rem + .27vw, 1.3125rem);
@@ -189,7 +212,7 @@
   --radius-sm: 8px;
   --radius-lg: 20px;
   --shadow:    0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
-  --ring:      0 0 0 3px rgba(56,189,248,.55);
+  --ring:      0 0 0 3px rgba(248,249,250,.55);
   --maxw:      1180px;
   --header-h:  72px;
   --ease:      cubic-bezier(.22,.61,.36,1);
@@ -210,7 +233,7 @@ body {
 }
 img, svg, video { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-underline-offset: .2em; }
-a:hover { color: #7DD3FC; }
+a:hover { color: var(--paper); }
 :focus-visible { outline: none; box-shadow: var(--ring); border-radius: 4px; }
 h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 var(--s-4); letter-spacing: -.02em; text-wrap: balance; }
 h1 { font-size: var(--step-4); font-weight: 600; }
@@ -221,15 +244,15 @@ p  { margin: 0 0 var(--s-4); max-width: 68ch; text-wrap: pretty; }
 ul, ol { margin: 0 0 var(--s-4); padding-left: 1.15em; }
 li { margin-bottom: var(--s-2); }
 hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
-::selection { background: var(--accent); color: #041022; }
+::selection { background: var(--accent); color: var(--navy); }
 
 .skip-link {
   position: absolute; left: var(--s-4); top: -100px; z-index: 200;
-  background: var(--accent-fill); color: #fff; padding: .75rem 1.25rem;
+  background: var(--accent-fill); color: var(--on-accent); padding: .75rem 1.25rem;
   border-radius: var(--radius-sm); font-weight: 600; text-decoration: none;
   transition: top .15s var(--ease);
 }
-.skip-link:focus { top: var(--s-4); color: #fff; }
+.skip-link:focus { top: var(--s-4); color: var(--on-accent); }
 
 /* ---------- 3. LAYOUT ---------------------------------------------------- */
 .wrap { width: min(100% - 2.5rem, var(--maxw)); margin-inline: auto; }
@@ -254,7 +277,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
 .header {
   position: sticky; top: 0; z-index: 100; height: var(--header-h);
   display: flex; align-items: center;
-  background: rgba(2,6,23,.82);
+  background: rgba(10,25,47,.86);
   backdrop-filter: saturate(140%) blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -290,8 +313,8 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
   transition: background-color .18s var(--ease), border-color .18s var(--ease), transform .18s var(--ease);
 }
 .btn:active { transform: translateY(1px); }
-.btn--primary { background: var(--accent-fill); color: #fff; }
-.btn--primary:hover { background: var(--accent-fill-h); color: #fff; }
+.btn--primary { background: var(--accent-fill); color: var(--on-accent); }
+.btn--primary:hover { background: var(--accent-fill-h); color: var(--on-accent); }
 .btn--ghost { background: transparent; color: var(--fg); border-color: var(--border-strong); }
 .btn--ghost:hover { background: var(--surface); color: var(--fg); border-color: var(--accent); }
 .btn--block { width: 100%; }
@@ -323,11 +346,11 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
 .hero { position: relative; padding-block: clamp(3.5rem, 9vw, 6.5rem) clamp(3rem, 7vw, 5rem); overflow: hidden; }
 .hero::before {
   content: ""; position: absolute; inset: -40% 0 auto -10%; height: 520px; pointer-events: none;
-  background: radial-gradient(60% 60% at 30% 40%, rgba(56,189,248,.16), transparent 70%);
+  background: radial-gradient(60% 60% at 30% 40%, rgba(112,128,144,.20), transparent 70%);
 }
 .hero__inner { position: relative; display: grid; gap: var(--s-7); }
 @media (min-width: 980px) { .hero__inner { grid-template-columns: 1.15fr .85fr; align-items: center; gap: var(--s-8); } }
-.hero h1 { margin-bottom: var(--s-5); max-width: 20ch; }
+.hero h1 { margin-bottom: var(--s-5); max-width: 24ch; }
 .hero .lede { max-width: 54ch; }
 .pill {
   display: inline-flex; align-items: center; gap: .5rem; margin-bottom: var(--s-5);
@@ -348,16 +371,19 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
   margin: 0; padding: .5rem .875rem; border: 1px solid var(--border); border-radius: 999px;
   background: var(--surface); font-size: var(--step--1); color: var(--fg-muted); font-weight: 500;
 }
+/* inside a card the chip must lift off the card, not match it */
+.card .logo-strip { margin-top: var(--s-4); }
+.card .logo-strip li { background: var(--surface-2); border-color: var(--border-strong); }
 
 /* ---------- 9. 3Ps FRAMEWORK -------------------------------------------- */
 .ps-grid { display: grid; gap: var(--s-4); }
 @media (min-width: 880px) { .ps-grid { grid-template-columns: repeat(3, 1fr); } }
 .ps {
   position: relative; background: var(--surface); border: 1px solid var(--border);
-  border-top: 3px solid var(--accent); border-radius: var(--radius); padding: var(--s-5);
+  border-top: 3px solid var(--paper); border-radius: var(--radius); padding: var(--s-5);
 }
 .ps:nth-child(2) { border-top-color: var(--gold); }
-.ps:nth-child(3) { border-top-color: #A78BFA; }
+.ps:nth-child(3) { border-top-color: var(--slate); }
 .ps__label { font-size: var(--step--1); letter-spacing: .16em; text-transform: uppercase; color: var(--fg-subtle); font-weight: 600; }
 .ps h3 { margin: .35rem 0 var(--s-3); font-size: var(--step-1); }
 
@@ -418,7 +444,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
   font: inherit; font-size: var(--step-0);
 }
 .field textarea { min-height: 120px; resize: vertical; }
-.field input::placeholder, .field textarea::placeholder { color: #6B7A93; }
+.field input::placeholder, .field textarea::placeholder { color: var(--fg-subtle); }
 .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { border-color: var(--accent); }
 .field .error { color: var(--danger); font-size: var(--step--1); }
 .form__note { font-size: var(--step--1); color: var(--fg-subtle); }
@@ -426,7 +452,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
 
 /* ---------- 15. CTA BAND ------------------------------------------------- */
 .band {
-  background: linear-gradient(140deg, #0B1D3A 0%, #071228 60%, #04101F 100%);
+  background: linear-gradient(140deg, #122C4C 0%, #0C1E38 62%, #0A192F 100%);
   border: 1px solid var(--border-strong); border-radius: var(--radius-lg);
   padding: clamp(1.75rem, 5vw, 3rem);
 }
@@ -460,7 +486,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
 .pagehead { position: relative; padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 4vw, 3rem); overflow: hidden; }
 .pagehead::before {
   content: ""; position: absolute; inset: -60% 0 auto -5%; height: 460px; pointer-events: none;
-  background: radial-gradient(55% 60% at 25% 45%, rgba(56,189,248,.13), transparent 70%);
+  background: radial-gradient(55% 60% at 25% 45%, rgba(112,128,144,.18), transparent 70%);
 }
 .pagehead > .wrap { position: relative; }
 .pagehead h1 { max-width: 20ch; }
@@ -471,12 +497,12 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
 @media (min-width: 880px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
 .tile {
   display: flex; flex-direction: column; text-decoration: none; color: inherit;
-  background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--accent);
+  background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--paper);
   border-radius: var(--radius); padding: var(--s-5);
   transition: border-color .2s var(--ease), transform .2s var(--ease), background-color .2s var(--ease);
 }
 .tile:nth-child(2) { border-top-color: var(--gold); }
-.tile:nth-child(3) { border-top-color: #A78BFA; }
+.tile:nth-child(3) { border-top-color: var(--slate); }
 .tile:hover { transform: translateY(-3px); background: var(--surface-2); color: inherit; }
 .tile:hover .tile__go { color: var(--accent); gap: .7rem; }
 .tile__label { font-size: var(--step--1); letter-spacing: .16em; text-transform: uppercase; color: var(--fg-subtle); font-weight: 600; }
@@ -530,9 +556,9 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
   <div class="header__inner">
     <a class="brand" href="index.html" aria-label="3P Strategy — home">
       <svg class="brand__mark" viewBox="0 0 32 32" role="img" aria-hidden="true" focusable="false">
-        <circle cx="12" cy="12" r="8.5" fill="none" stroke="#38BDF8" stroke-width="1.6"/>
-        <circle cx="20" cy="12" r="8.5" fill="none" stroke="#E7B44C" stroke-width="1.6"/>
-        <circle cx="16" cy="20" r="8.5" fill="none" stroke="#A78BFA" stroke-width="1.6"/>
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="#F8F9FA" stroke-width="1.6"/>
+        <circle cx="20" cy="12" r="8.5" fill="none" stroke="#C0C0C0" stroke-width="1.6"/>
+        <circle cx="16" cy="20" r="8.5" fill="none" stroke="#708090" stroke-width="1.6"/>
       </svg>
       <span>3P Strategy<small>Product · Process · People</small></span>
     </a>
@@ -543,7 +569,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
       <a href="process.html">Process</a>
       <a href="people.html">People</a>
       <a href="contact.html">Contact</a>
-      <a class="btn btn--primary" href="https://calendly.com/lupinxiv-fw3/30min" data-cta="header-book">Book a call</a>
+      <a class="btn btn--primary" href="https://calendly.com/lupinxbt-fw3/30min" data-cta="header-book">Book a call</a>
     </nav>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -560,7 +586,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
     <li><a href="process.html">Process</a></li>
     <li><a href="people.html">People</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li style="border:0;padding-top:1rem"><a class="btn btn--primary btn--block" href="https://calendly.com/lupinxiv-fw3/30min" data-cta="mobile-book">Book a call</a></li>
+    <li style="border:0;padding-top:1rem"><a class="btn btn--primary btn--block" href="https://calendly.com/lupinxbt-fw3/30min" data-cta="mobile-book">Book a call</a></li>
   </ul>
 </div>
 
@@ -568,14 +594,15 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
 
   <section class="pagehead">
     <div class="wrap">
+      <p class="pill">ISO-aligned framework · alignment, not certification</p>
       <p class="eyebrow">Product — the first P</p>
       <h1>The 3Ps Audit, and what you actually receive.</h1>
       <p class="lede">
         A fixed-scope operational and technical due-diligence review for tech projects before the funding.
-        Every finding is scored, risk-flagged and translated into a prioritised fix — not a generic checklist.
+        Every finding is scored, risk-flagged and translated into a prioritized fix — not a generic checklist.
       </p>
       <div class="btn-row" style="margin-top:1.5rem">
-        <a class="btn btn--primary" href="https://calendly.com/lupinxiv-fw3/30min" data-cta="product-hero-book">
+        <a class="btn btn--primary" href="https://calendly.com/lupinxbt-fw3/30min" data-cta="product-hero-book">
           Book a 30-minute call
           <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -589,7 +616,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
     <div class="wrap">
       <div class="section__head reveal">
         <p class="eyebrow">What you get</p>
-        <h2 id="deliverables-h">Four artefacts you can put in front of a committee.</h2>
+        <h2 id="deliverables-h">Four artifacts you can put in front of a committee.</h2>
       </div>
 
       <div class="grid grid--2">
@@ -694,6 +721,55 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
     </div>
   </section>
 
+  <!-- ================= ISO ALIGNMENT ================= -->
+  <section class="section" id="iso" aria-labelledby="iso-h">
+    <div class="wrap">
+      <div class="grid grid--2" style="gap:3rem;align-items:start">
+        <div class="reveal">
+          <p class="eyebrow">ISO-aligned framework</p>
+          <h2 id="iso-h">Scored against standards your investors already recognize.</h2>
+          <p class="lede">
+            The 3Ps map onto the international management-system standards that diligence teams,
+            grant committees and enterprise partners already use as their reference. Findings arrive
+            in language a committee does not have to translate.
+          </p>
+          <p class="muted">
+            This is <strong>alignment, not certification</strong>. The audit tells you where you would
+            stand against these standards and what it would take to close the gap. It does not confer
+            a certificate — only an accredited certification body can do that — and it is not an audit
+            performed on their behalf.
+          </p>
+        </div>
+
+        <aside class="card reveal">
+          <h3 style="font-size:1.125rem">How the 3Ps map</h3>
+          <dl class="rows" style="border-top:1px solid var(--border)">
+            <div>
+              <dt>ISO 9001</dt>
+              <dd>Quality management — the process approach, documented information and continual
+                improvement that Product and Process are scored against.</dd>
+            </div>
+            <div>
+              <dt>ISO/IEC 27001</dt>
+              <dd>Information security — access control, asset management and incident response,
+                inside the Process dimension.</dd>
+            </div>
+            <div>
+              <dt>ISO 31000</dt>
+              <dd>Risk management — the structure and severity scoring of the risk register you
+                receive.</dd>
+            </div>
+            <div>
+              <dt>ISO 21502</dt>
+              <dd>Project and program management — governance, roles and delivery control, across
+                Process and People.</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= ENGAGEMENT MODELS ================= -->
   <section class="section section--alt" id="engagements" aria-labelledby="eng-h">
     <div class="wrap">
@@ -703,23 +779,20 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
         <p class="lede">Most clients start with an audit. Implementation support is optional and only worth buying where it earns its cost.</p>
       </div>
 
-      <!-- TODO(pricing): replace [$X] with real figures or a stated "from" range before launch.
-           A page with no price signal loses qualified buyers who assume it is out of reach,
-           and burns calls on buyers who cannot afford it. -->
       <div class="grid grid--3">
         <article class="card reveal">
           <h3 style="font-size:1.125rem">Focused audit</h3>
           <p class="muted" style="font-size:.9375rem">One dimension, single product line. For a specific worry you already have.</p>
-          <p style="font-weight:600;margin:0">From [$X] · ~1 week</p>
+          <p style="font-weight:600;margin:0">~1 week · scoped on the intro call</p>
         </article>
         <article class="card reveal" style="border-color:var(--accent)">
           <h3 style="font-size:1.125rem">Full 3Ps Audit</h3>
           <p class="muted" style="font-size:.9375rem">All three dimensions, report, risk register, roadmap and review call. The usual entry point.</p>
-          <p style="font-weight:600;margin:0">From [$X] · 1–2 weeks</p>
+          <p style="font-weight:600;margin:0">1–2 weeks · scoped on the intro call</p>
         </article>
         <article class="card reveal">
           <h3 style="font-size:1.125rem">Portfolio screening</h3>
-          <p class="muted" style="font-size:.9375rem">Repeatable scoring across multiple projects, for funds and programmes.</p>
+          <p class="muted" style="font-size:.9375rem">Repeatable scoring across multiple projects, for funds and programs.</p>
           <p style="font-weight:600;margin:0">Quoted per portfolio</p>
         </article>
       </div>
@@ -757,7 +830,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
           <div class="card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg>
           </div>
-          <h3 style="font-size:1.0625rem">Project &amp; programme management</h3>
+          <h3 style="font-size:1.0625rem">Project &amp; program management</h3>
           <ul class="card__list">
             <li>Lifecycle management</li>
             <li>Scope and business case</li>
@@ -778,7 +851,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
             <li>Market research and analysis</li>
             <li>Go-to-market and partnerships</li>
             <li>Fundraising, grants and investment</li>
-            <li>Business and revenue modelling</li>
+            <li>Business and revenue modeling</li>
             <li>Pitch deck and MVP development</li>
           </ul>
         </article>
@@ -793,7 +866,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
             <li>Discord and Telegram operations</li>
             <li>Event and campaign planning</li>
             <li>Community security and crisis response</li>
-            <li>Ambassador and contributor programmes</li>
+            <li>Ambassador and contributor programs</li>
           </ul>
         </article>
 
@@ -821,11 +894,11 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
         <h2 id="cta-h">Ready to see the scope against your project?</h2>
         <p class="lede" style="max-width:58ch">A 30-minute call is enough to size the audit, confirm what is in scope, and tell you whether it is worth doing at all.</p>
         <div class="btn-row" style="margin-top:1.5rem">
-          <a class="btn btn--primary" href="https://calendly.com/lupinxiv-fw3/30min" data-cta="product-book">
+          <a class="btn btn--primary" href="https://calendly.com/lupinxbt-fw3/30min" data-cta="product-book">
             Book a 30-minute call
             <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--ghost" href="contact.html#sample" data-cta="product-sample">Request the sample report</a>
+          <a class="btn btn--ghost" href="contact.html#message" data-cta="product-message">Send us a message</a>
         </div>
         <p class="muted" style="font-size:.875rem;margin:1.25rem 0 0">
           Confidential · NDA on request · Typical turnaround 1–2 weeks
@@ -843,15 +916,15 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
       <div>
         <a class="brand" href="index.html" style="margin-bottom:1rem">
           <svg class="brand__mark" viewBox="0 0 32 32" role="img" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="8.5" fill="none" stroke="#38BDF8" stroke-width="1.6"/>
-            <circle cx="20" cy="12" r="8.5" fill="none" stroke="#E7B44C" stroke-width="1.6"/>
-            <circle cx="16" cy="20" r="8.5" fill="none" stroke="#A78BFA" stroke-width="1.6"/>
+            <circle cx="12" cy="12" r="8.5" fill="none" stroke="#F8F9FA" stroke-width="1.6"/>
+            <circle cx="20" cy="12" r="8.5" fill="none" stroke="#C0C0C0" stroke-width="1.6"/>
+            <circle cx="16" cy="20" r="8.5" fill="none" stroke="#708090" stroke-width="1.6"/>
           </svg>
           <span>3P Strategy<small>Product · Process · People</small></span>
         </a>
         <p class="muted" style="font-size:.9375rem;max-width:38ch">
-          The 3Ps Audit — operational and technical due diligence for tech projects, funds and grant programmes.
-          Led by Lester “Lupin” Magboo · Bacolod, Philippines · working across APAC and EMEA hours.
+          The 3Ps Audit — operational and technical due diligence for tech projects, funds and grant programs.
+          Led by Engr. Lester Jun Magboo (LupinXBT) · Philippines · working across APAC and EMEA.
         </p>
         <ul class="social" style="display:flex;gap:.5rem;margin-top:1rem;list-style:none;padding:0">
           <li><a href="https://x.com/lupinxbt" rel="me noopener" aria-label="3P Strategy on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-7.3L5.9 22H2.8l7.5-8.6L2.4 2h6.6l4.5 6.7L18.9 2Zm-1.1 18.1h1.7L7.3 3.8H5.5l12.3 16.3Z"/></svg></a></li>
@@ -873,16 +946,15 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-7) 0; }
         <h2 id="foot-nav-2">Get started</h2>
         <ul>
           <li><a href="contact.html">Why work with me</a></li>
-          <li><a href="https://calendly.com/lupinxiv-fw3/30min">Book a 30-minute call</a></li>
-          <li><a href="contact.html#sample">Request the sample report</a></li>
-          <li><a href="mailto:hello@3pstrategy.io">hello@3pstrategy.io</a></li>
+          <li><a href="https://calendly.com/lupinxbt-fw3/30min">Book a 30-minute call</a></li>
+          <li><a href="contact.html#message">Send us a message</a></li>
         </ul>
       </nav>
     </div>
 
     <div class="footer__bottom">
       <p style="margin:0">© <span data-year>2026</span> 3P Strategy · LupinXBT Tech Solutions. All rights reserved.</p>
-      <p style="margin:0">Independent advisory. Not investment, legal or tax advice.</p>
+      <p style="margin:0">Independent Consultancy. Not legal or tax advisory.</p>
     </div>
   </div>
 </footer>
