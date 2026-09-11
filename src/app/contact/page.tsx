@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, TextReveal } from "@/components/animations/ScrollReveal";
 import { ParallaxText } from "@/components/animations/ParallaxText";
+import { TiltCard } from "@/components/animations/TiltCard";
 import { motion } from "framer-motion";
 
 function MonoLabel({ children, color = "#C0C0C0" }: { children: React.ReactNode; color?: string }) {
@@ -48,6 +49,24 @@ const roles = [
   "Core member, contributor and moderator across protocols",
   "Project technical assistant — DOST Region VI",
   "Instrumentation technician — large-scale manufacturing",
+];
+
+const testimonials = [
+  {
+    quote: "Lester is a proactive individual who excels at the challenges of everyday work. He is skilled at identifying and capitalizing on new business opportunities, and his dedication to achieving success is commendable. He is an excellent time manager and consistently delivers.",
+    name: "Ferdie James Nervida",
+    role: "Strategic Advisor on AI, Blockchain, Cybersecurity and Digital Trust",
+  },
+  {
+    quote: "His knowledge, ability to build and use frameworks or workbooks was lifesaving in the fast paced Web3 space where you constantly have to shift and adapt. He doesn’t gamble, but use pure brain power and thorough work to accomplish the mission he’s assigned for.",
+    name: "Andrew Bukauskas",
+    role: "Marketing and Growth Strategist",
+  },
+  {
+    quote: "He has shown strong critical and dynamic thinking, which is very much needed in the Web3 ecosystem. His strong academic background and exposure to different business ecosystems add real value to his skills.",
+    name: "Joseph Corpuz",
+    role: "Founder, Filipino Web3",
+  },
 ];
 
 export default function Contact() {
@@ -153,22 +172,19 @@ export default function Contact() {
               <div className="p-8 border-[3px] border-[#0A192F] bg-[#0A192F] h-full">
                 <MonoLabel color="#C0C0C0">About</MonoLabel>
                 <h2
-                  className="font-bold text-[clamp(1.75rem,3vw,2.5rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
+                  className="font-bold text-[clamp(1.5rem,2.5vw,2.25rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Lester "Lupin" Magboo
+                  Engr. Lester Jun Magboo (LupinXBT)
                 </h2>
                 <p className="font-mono text-[13px] text-[#C0C0C0] mb-4 uppercase tracking-wider">
-                  3P Strategist · Engineering-Based Problem Solving
+                  3P Strategist and Consultant — engineering-based problem solving applied to digital assets, operations and investment readiness.
                 </p>
                 <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-4">
-                  I work at the intersection of blockchain, AI and fintech, turning complex data and market trends into scalable systems and defensible investment theses.
-                </p>
-                <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-4">
-                  The background is unusual on purpose: electronics and environmental engineering, then plant-floor instrumentation, then government-funded technology programmes, then Web3 operations, community scaling and investment analysis.
+                  I work at the intersection of blockchain, AI and Fintech, turning complex data and market trends into sustainable and scalable systems. The background is unusual on purpose: electronics and environmental engineering, then plant-floor instrumentation, then government-funded technology programs, then Web3 operations, community scaling and investment analysis. My focus is to help startups and organizations optimize their product, process, and people to build resilient enterprise and be investment ready.
                 </p>
                 <p className="font-mono text-[12px] text-[#708090] m-0 mt-8">
-                  Based in Bacolod, Philippines · Working across APAC and EMEA hours.
+                  Working across APAC and EMEA hours.
                 </p>
               </div>
 
@@ -213,59 +229,192 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── BOOK INFO ─────────────────────────────────── */}
-      <section className="py-24" id="book">
-        <div className="w-full max-w-[800px] mx-auto px-5">
+      {/* ── TESTIMONIALS ──────────────────────────────── */}
+      <section className="py-24 border-b-[3px] border-[#0A192F]">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
-            <div className="p-10 border-[3px] border-[#0A192F] bg-[#112240] brut-card" style={{ boxShadow: "10px 10px 0 0 #0A192F" }}>
-              <MonoLabel color="#C0C0C0">Book a Call</MonoLabel>
-              <h2
-                className="font-bold text-[clamp(1.75rem,3vw,2.5rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
-                style={{ fontFamily: "var(--font-sora), sans-serif" }}
-              >
-                Tell Me What's<br />Keeping You Up.
-              </h2>
-              <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-10 max-w-[50ch]">
-                Thirty minutes, no deck. We work out whether the problem you have is the one an audit solves.
-              </p>
-              
-              <div className="flex flex-wrap gap-0 mb-12">
-                <a
-                  href="https://calendly.com/lupinxbt-fw3/30min?month"
-                  className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                    bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
-                  style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+            <MonoLabel color="#C0C0C0">References</MonoLabel>
+            <h2
+              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] uppercase leading-tight tracking-tight mt-2 mb-12 text-[#F8F9FA]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              What Colleagues<br />& Clients Say.
+            </h2>
+          </ScrollReveal>
+
+          <StaggerContainer className="grid md:grid-cols-3 gap-0" stagger={0.15}>
+            {testimonials.map((t, i) => (
+              <StaggerItem key={i} className="h-full" style={{ perspective: "1000px" }}>
+                <TiltCard 
+                  className="p-8 border-[3px] border-[#0A192F] bg-[#112240] flex flex-col m-0 brut-card" 
+                  accentColor="#708090"
                 >
-                  Book a 30-min Call <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="mailto:hello@3pstrategy.io"
-                  className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                    bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] transition-colors"
+                  <span className="font-bold text-[4rem] leading-none text-[#C0C0C0] select-none block mb-4" aria-hidden="true"
+                        style={{ fontFamily: "var(--font-sora), sans-serif", transform: "translateZ(30px)" }}>"</span>
+                  <blockquote className="m-0 mb-8 font-mono text-[13px] text-[#C0C0C0] leading-relaxed flex-1" style={{ transform: "translateZ(20px)" }}>
+                    {t.quote}
+                  </blockquote>
+                  <div className="border-t-[3px] border-[#1a3158] pt-5 mt-auto" style={{ transform: "translateZ(30px)" }}>
+                    <cite className="not-italic font-bold text-[#F8F9FA] block text-[14px] uppercase mb-1"
+                          style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                      {t.name}
+                    </cite>
+                    <span className="font-mono text-[11px] text-[#708090] uppercase tracking-wider block leading-relaxed">{t.role}</span>
+                  </div>
+                </TiltCard>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ── BOOK INFO + FORM ──────────────────────────── */}
+      <section className="py-24" id="book">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <div className="grid md:grid-cols-2 gap-0 items-start">
+            
+            {/* Left Column: Book a Call */}
+            <div className="p-8 md:p-10 border-[3px] border-[#0A192F] bg-[#0A192F]">
+              <ScrollReveal>
+                <MonoLabel color="#C0C0C0">Book a Call</MonoLabel>
+                <h2
+                  className="font-bold text-[clamp(1.75rem,3vw,2.5rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Email Directly
-                </a>
-              </div>
-              
-              <dl className="border-t-[3px] border-[#1a3158] pt-4">
-                {[
-                  { dt: "Email", dd: <a href="mailto:hello@3pstrategy.io" className="text-[#C0C0C0] hover:underline">hello@3pstrategy.io</a> },
-                  { dt: "Based In", dd: "Bacolod, Philippines · APAC & EMEA hours" },
-                  { dt: "Turnaround", dd: "1–2 weeks from kickoff" },
-                  { dt: "Confidentiality", dd: "NDA on request before substantive exchange" },
-                ].map(({ dt, dd }) => (
-                  <div key={dt} className="grid grid-cols-[8rem_1fr] gap-4 py-3 border-b-[3px] border-[#1a3158] last:border-b-0">
-                    <dt className="font-bold text-[11px] uppercase tracking-widest text-[#708090] self-center"
-                        style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-                      {dt}
-                    </dt>
-                    <dd className="m-0 font-mono text-[13px] text-[#C0C0C0]">{dd}</dd>
-                  </div>
-                ))}
-              </dl>
+                  Tell me what is<br />keeping you up<br />at night.
+                </h2>
+                <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-10 max-w-[50ch]">
+                  Thirty minutes, no deck. We work out whether the problem you have is the one an audit solves, and what it would cost to find out properly.
+                </p>
+                
+                <div className="flex flex-wrap gap-0 mb-12">
+                  <a
+                    href="https://calendly.com/lupinxbt-fw3/30min"
+                    className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                      bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
+                    style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    Book a 30-min call <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="#message"
+                    className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                      bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] transition-colors"
+                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    Send us a message
+                  </a>
+                </div>
+                
+                <dl className="border-t-[3px] border-[#112240] pt-4">
+                  {[
+                    { dt: "Messages", dd: "Through the form — replies come from 3pstrategy@gmail.com, so it is worth allowing that address." },
+                    { dt: "Based In", dd: "Bacolod, Philippines · APAC and EMEA hours" },
+                    { dt: "Turnaround", dd: "1–2 weeks from kickoff" },
+                    { dt: "Confidentiality", dd: "NDA on request before anything substantive is exchanged" },
+                  ].map(({ dt, dd }) => (
+                    <div key={dt} className="grid grid-cols-[8rem_1fr] gap-4 py-3 border-b-[3px] border-[#112240] last:border-b-0">
+                      <dt className="font-bold text-[11px] uppercase tracking-widest text-[#708090] self-center"
+                          style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                        {dt}
+                      </dt>
+                      <dd className="m-0 font-mono text-[13px] text-[#C0C0C0] leading-relaxed">{dd}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+
+            {/* Right Column: Contact Form */}
+            <div className="border-[3px] border-[#0A192F] bg-[#112240] p-8 md:p-10 brut-card h-full" id="message" style={{ boxShadow: "8px 8px 0 0 #C0C0C0", marginLeft: "-3px" }}>
+              <ScrollReveal>
+                <MonoLabel color="#C0C0C0">Contact Form</MonoLabel>
+                <h3
+                  className="font-bold text-[clamp(1.5rem,2vw,2rem)] uppercase tracking-tight mt-3 mb-4 text-[#F8F9FA]"
+                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  Send us a message
+                </h3>
+                <p className="font-mono text-[13px] text-[#C0C0C0] mb-8 leading-relaxed">
+                  Tell me what you are trying to find out. Replies come from 3pstrategy@gmail.com, usually within one working day.
+                </p>
+
+                <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+                  {[
+                    { id: "f-name", label: "Name", type: "text" },
+                    { id: "f-email", label: "Work email", type: "email" },
+                  ].map(({ id, label, type }) => (
+                    <div key={id}>
+                      <label htmlFor={id} className="block font-mono text-[11px] tracking-[0.14em] uppercase text-[#708090] mb-2">
+                        {label}
+                      </label>
+                      <input
+                        id={id}
+                        type={type}
+                        className="w-full px-4 py-3 bg-[#0A192F] text-[#F8F9FA] border-[3px] border-[#0A192F] font-mono text-[14px] focus:outline-none focus:border-[#C0C0C0] transition-colors"
+                      />
+                    </div>
+                  ))}
+
+                  <div>
+                    <label htmlFor="f-role" className="block font-mono text-[11px] tracking-[0.14em] uppercase text-[#708090] mb-2">
+                      I am a…
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="f-role"
+                        className="w-full px-4 py-3 bg-[#0A192F] text-[#F8F9FA] border-[3px] border-[#0A192F] font-mono text-[14px] focus:outline-none focus:border-[#C0C0C0] appearance-none transition-colors"
+                      >
+                        <option value="founder">Founder / operator</option>
+                        <option value="investor">VC or angel investor</option>
+                        <option value="programme">Grant, incubator or accelerator</option>
+                        <option value="other">Other</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-[#708090]">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="f-project" className="block font-mono text-[11px] tracking-[0.14em] uppercase text-[#708090] mb-2">
+                      Project name or URL
+                    </label>
+                    <input
+                      id="f-project"
+                      type="text"
+                      className="w-full px-4 py-3 bg-[#0A192F] text-[#F8F9FA] border-[3px] border-[#0A192F] font-mono text-[14px] focus:outline-none focus:border-[#C0C0C0] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="f-msg" className="block font-mono text-[11px] tracking-[0.14em] uppercase text-[#708090] mb-2">
+                      Context
+                    </label>
+                    <textarea
+                      id="f-msg"
+                      rows={4}
+                      className="w-full px-4 py-3 bg-[#0A192F] text-[#F8F9FA] border-[3px] border-[#0A192F] font-mono text-[14px] focus:outline-none focus:border-[#C0C0C0] resize-y transition-colors"
+                    />
+                    <p className="font-mono text-[11px] text-[#708090] mt-2 m-0">The more specific the context, the more useful the first call.</p>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                      bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press mt-4"
+                    style={{ boxShadow: "4px 4px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    Send message
+                  </button>
+                  <p className="font-mono text-[11px] text-[#708090] text-center mt-4 m-0">
+                    Used only to reply to your message. No list, no newsletter.
+                  </p>
+                </form>
+              </ScrollReveal>
+            </div>
+            
+          </div>
         </div>
       </section>
     </>

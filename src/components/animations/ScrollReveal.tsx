@@ -84,13 +84,16 @@ export function StaggerContainer({
 export function StaggerItem({
   children,
   className = "",
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <motion.div
       className={className}
+      style={style}
       variants={{
         hidden: { opacity: 0, y: 30 },
         visible: {

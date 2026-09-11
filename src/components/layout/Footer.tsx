@@ -29,9 +29,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t-[3px] border-[#0A192F] bg-[#0A192F] pt-16 pb-8">
+    <footer className="border-t-[3px] border-[#112240] bg-[#0A192F] pt-16 pb-8">
       <div className="w-full max-w-[1280px] mx-auto px-5">
-        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-12 pb-12 border-b-[3px] border-[#112240]">
+        <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] gap-12 pb-12 border-b-[3px] border-[#112240]">
 
           {/* Brand column */}
           <div>
@@ -45,16 +45,16 @@ export default function Footer() {
                   3P Strategy
                 </span>
                 <span className="block font-mono text-[9px] tracking-[0.15em] uppercase text-[#C0C0C0]">
-                  Due Diligence
+                  Product · Process · People
                 </span>
               </div>
             </Link>
-            <p className="text-[14px] text-[#C0C0C0] max-w-[36ch] leading-relaxed mb-6 font-mono">
-              The 3Ps Audit — operational and technical due diligence for tech projects, funds and grant programmes.
+            <p className="text-[13px] text-[#C0C0C0] max-w-[42ch] leading-relaxed mb-4 font-mono">
+              The 3Ps Audit — operational and technical due diligence for tech projects, funds and grant programs.
             </p>
-            <p className="text-[12px] text-[#708090] font-mono tracking-wider uppercase mb-4">
-              Led by Lester "Lupin" Magboo<br />
-              Bacolod, Philippines · APAC &amp; EMEA
+            <p className="text-[12px] text-[#708090] font-mono tracking-wider mb-6 leading-relaxed">
+              Led by Engr. Lester Jun Magboo (LupinXBT)<br />
+              Philippines · working across APAC and EMEA.
             </p>
 
             {/* Social links */}
@@ -78,19 +78,19 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Nav columns */}
+          {/* The 3Ps column */}
           <div>
             <h3 className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#C0C0C0] mb-5 pb-2 border-b-[3px] border-[#112240]">
               The 3Ps
             </h3>
             <ul className="space-y-1 list-none p-0">
               {[
-                { href: "/product", label: "Product / 01" },
-                { href: "/process", label: "Process / 02" },
-                { href: "/people", label: "People / 03" },
+                { href: "/product", label: "Product — the audit and services" },
+                { href: "/process", label: "Process — how it works" },
+                { href: "/people", label: "People — who it is for" },
               ].map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className="block py-2 font-mono text-[13px] text-[#C0C0C0] hover:text-[#C0C0C0] uppercase tracking-wider">
+                  <Link href={href} className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
                     {label}
                   </Link>
                 </li>
@@ -98,32 +98,42 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Get Started column */}
           <div>
             <h3 className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#C0C0C0] mb-5 pb-2 border-b-[3px] border-[#112240]">
               Get Started
             </h3>
             <ul className="space-y-1 list-none p-0">
-              {[
-                { href: "https://calendly.com/lupinxbt-fw3/30min?month", label: "Book a 30-min call", external: true },
-                { href: "/contact", label: "Why work with me" },
-                { href: "mailto:hello@3pstrategy.io", label: "hello@3pstrategy.io", external: true },
-              ].map(({ href, label, external }) =>
-                external ? (
-                  <li key={href}>
-                    <a href={href} className="block py-2 font-mono text-[13px] text-[#C0C0C0] hover:text-[#C0C0C0] uppercase tracking-wider">
-                      {label}
-                    </a>
-                  </li>
-                ) : (
-                  <li key={href}>
-                    <Link href={href} className="block py-2 font-mono text-[13px] text-[#C0C0C0] hover:text-[#C0C0C0] uppercase tracking-wider">
-                      {label}
-                    </Link>
-                  </li>
-                )
-              )}
+              <li>
+                <Link href="/contact" className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
+                  Why work with me
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
+                  FAQ — Before you book
+                </Link>
+              </li>
+              <li>
+                <a href="https://calendly.com/lupinxbt-fw3/30min" target="_blank" rel="noopener noreferrer"
+                   className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
+                  Book a 30-minute call
+                </a>
+              </li>
+              <li>
+                <Link href="/contact#message" className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
+                  Send us a message
+                </Link>
+              </li>
+              <li>
+                <a href="mailto:3pstrategy@gmail.com"
+                   className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
+                  3pstrategy@gmail.com
+                </a>
+              </li>
             </ul>
           </div>
+
         </div>
 
         {/* Bottom bar */}
