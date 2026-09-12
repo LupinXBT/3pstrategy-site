@@ -26,10 +26,10 @@ const services = [
   },
   {
     id: "02",
-    title: "Technical Audit",
-    tagline: "Architecture & Code Review",
-    desc: "Smart-contract logic, system architecture, security posture and technical documentation examined. Findings are graded by severity — Critical, High, Medium, Low — with actionable remediation guidance.",
-    tags: ["Security", "Architecture", "Code"],
+    title: "Product-Market Fit Audit",
+    tagline: "Positioning & Traction Review",
+    desc: "An assessment of how well the product addresses a real, sizable market need. Covers user adoption signals, competitive differentiation, go-to-market clarity and evidence of traction — graded with actionable guidance.",
+    tags: ["Positioning", "Traction", "GTM"],
     accent: "#708090",
   },
   {

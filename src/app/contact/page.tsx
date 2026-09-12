@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, TextReveal } from "@/components/animations/ScrollReveal";
 import { ParallaxText } from "@/components/animations/ParallaxText";
 import { TiltCard } from "@/components/animations/TiltCard";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 function MonoLabel({ children, color = "#C0C0C0" }: { children: React.ReactNode; color?: string }) {
   return (
@@ -70,6 +71,8 @@ const testimonials = [
 ];
 
 export default function Contact() {
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
   return (
     <>
       {/* ── HERO ──────────────────────────────────────── */}
@@ -164,71 +167,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── ABOUT ─────────────────────────────────────── */}
-      <section className="py-24 border-b-[3px] border-[#0A192F]">
-        <div className="w-full max-w-[1280px] mx-auto px-5">
-          <ScrollReveal>
-            <div className="grid md:grid-cols-2 gap-0 items-start">
-              <div className="p-8 border-[3px] border-[#0A192F] bg-[#0A192F] h-full">
-                <MonoLabel color="#C0C0C0">About</MonoLabel>
-                <h2
-                  className="font-bold text-[clamp(1.5rem,2.5vw,2.25rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
-                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  Engr. Lester Jun Magboo (LupinXBT)
-                </h2>
-                <p className="font-mono text-[13px] text-[#C0C0C0] mb-4 uppercase tracking-wider">
-                  3P Strategist and Consultant — engineering-based problem solving applied to digital assets, operations and investment readiness.
-                </p>
-                <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-4">
-                  I work at the intersection of blockchain, AI and Fintech, turning complex data and market trends into sustainable and scalable systems. The background is unusual on purpose: electronics and environmental engineering, then plant-floor instrumentation, then government-funded technology programs, then Web3 operations, community scaling and investment analysis. My focus is to help startups and organizations optimize their product, process, and people to build resilient enterprise and be investment ready.
-                </p>
-                <p className="font-mono text-[12px] text-[#708090] m-0 mt-8">
-                  Working across APAC and EMEA hours.
-                </p>
-              </div>
-
-              <div className="border-[3px] border-[#0A192F] bg-[#112240] h-full" style={{ marginLeft: "-3px" }}>
-                <div className="p-8 border-b-[3px] border-[#0A192F]">
-                  <MonoLabel color="#708090">Selected Roles</MonoLabel>
-                  <ul className="mt-4 space-y-3 list-none p-0 m-0">
-                    {roles.map((r) => (
-                      <li key={r} className="flex gap-3 font-mono text-[12px] text-[#C0C0C0] leading-relaxed">
-                        <span className="text-[#C0C0C0] shrink-0">▸</span>
-                        {r}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="p-8">
-                  <MonoLabel color="#708090">Credentials</MonoLabel>
-                  <ul className="mt-4 space-y-3 list-none p-0 mb-6">
-                    {[
-                      "Engineering background — Electronics & Environmental",
-                      "Project management and business strategy certifications",
-                      "Blockchain, AI and fintech specialisations",
-                    ].map((c) => (
-                      <li key={c} className="flex gap-3 font-mono text-[12px] text-[#C0C0C0] leading-relaxed">
-                        <span className="text-[#C0C0C0] shrink-0">▸</span>
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href="https://www.linkedin.com/in/ljmagboo/details/certifications/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-[12px] text-[#F8F9FA] uppercase tracking-wider hover:text-[#C0C0C0] transition-colors"
-                  >
-                    Full certification list on LinkedIn →
-                  </a>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* ── TESTIMONIALS ──────────────────────────────── */}
       <section className="py-24 border-b-[3px] border-[#0A192F]">
         <div className="w-full max-w-[1280px] mx-auto px-5">
@@ -265,6 +203,154 @@ export default function Contact() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ── ABOUT ─────────────────────────────────────── */}
+      <section className="py-24 border-b-[3px] border-[#0A192F]">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <ScrollReveal>
+            <div className="grid md:grid-cols-[340px_1fr_1fr] gap-0 items-stretch">
+
+              {/* Photo column — single big portrait */}
+              <div
+                className="border-[3px] border-[#0A192F] bg-[#112240] flex flex-col overflow-hidden relative group cursor-pointer"
+                style={{ minHeight: "520px" }}
+                onClick={() => setLightbox("/lupin/lupin_3.jpg")}
+                title="Click to expand portrait"
+              >
+                <img
+                  src="/lupin/lupin_3.jpg"
+                  alt="Engr. Lester Jun Magboo (LupinXBT)"
+                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 block"
+                  style={{ minHeight: "520px" }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
+                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">Lead 3P Strategist</span>
+                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block leading-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                    Engr. Lester Jun Magboo
+                  </span>
+                  <span className="font-mono text-[11px] text-[#708090] block mt-0.5">LupinXBT</span>
+                </div>
+              </div>
+
+              {/* Bio column */}
+              <div className="p-8 border-[3px] border-[#0A192F] bg-[#0A192F] h-full" style={{ marginLeft: "-3px" }}>
+                <MonoLabel color="#C0C0C0">About</MonoLabel>
+                <h2
+                  className="font-bold text-[clamp(1.25rem,2vw,1.75rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
+                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  Engr. Lester Jun Magboo
+                </h2>
+                <p className="font-mono text-[12px] text-[#C0C0C0] mb-5 uppercase tracking-wider leading-relaxed">
+                  3P Strategist and Consultant — engineering-based problem solving applied to digital assets, operations and investment readiness.
+                </p>
+                <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-5">
+                  I work at the intersection of blockchain, AI and Fintech, turning complex data and market trends into sustainable and scalable systems.
+                </p>
+                <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed">
+                  The background is unusual on purpose: electronics and environmental engineering, then plant-floor instrumentation, then government-funded technology programs, then Web3 operations, community scaling and investment analysis. My focus is to help startups and organizations optimize their product, process, and people to build resilient enterprise and be investment ready.
+                </p>
+                <p className="font-mono text-[11px] text-[#708090] m-0 mt-8 border-t-[2px] border-[#112240] pt-4">
+                  Working across APAC and EMEA hours.
+                </p>
+              </div>
+
+              {/* Roles & Credentials column */}
+              <div className="border-[3px] border-[#0A192F] bg-[#112240] h-full" style={{ marginLeft: "-3px" }}>
+                <div className="p-8 border-b-[3px] border-[#0A192F]">
+                  <MonoLabel color="#708090">Selected Roles</MonoLabel>
+                  <ul className="mt-4 space-y-3 list-none p-0 m-0">
+                    {roles.map((r) => (
+                      <li key={r} className="flex gap-3 font-mono text-[12px] text-[#C0C0C0] leading-relaxed">
+                        <span className="text-[#C0C0C0] shrink-0">▸</span>
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-8">
+                  <MonoLabel color="#708090">Credentials</MonoLabel>
+                  <ul className="mt-4 space-y-3 list-none p-0 mb-6">
+                    {[
+                      "Engineering background — Electronics & Environmental",
+                      "Project management and business strategy certifications",
+                      "Blockchain, AI and fintech specialisations",
+                    ].map((c) => (
+                      <li key={c} className="flex gap-3 font-mono text-[12px] text-[#C0C0C0] leading-relaxed">
+                        <span className="text-[#C0C0C0] shrink-0">▸</span>
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href="https://www.linkedin.com/in/ljmagboo/details/certifications/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[12px] text-[#F8F9FA] uppercase tracking-wider hover:text-[#C0C0C0] transition-colors"
+                  >
+                    Full certification list on LinkedIn →
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── PHOTO COLLAGE SHOWCASE ─────────────────────── */}
+      <section className="py-24 border-b-[3px] border-[#0A192F]">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <ScrollReveal>
+            <MonoLabel color="#C0C0C0">Media & Profile</MonoLabel>
+            <h2
+              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] uppercase leading-tight tracking-tight mt-2 mb-12 text-[#F8F9FA]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              Gallery & Spotlight.
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-0 border-[3px] border-[#0A192F] bg-[#112240] brut-card" style={{ boxShadow: "10px 10px 0 0 #0A192F" }}>
+              {/* Image 1 in Collage */}
+              <div
+                className="relative h-[380px] border-b-[3px] md:border-b-0 md:border-r-[3px] border-[#0A192F] overflow-hidden group cursor-pointer"
+                onClick={() => setLightbox("/lupin/lupin_3.jpg")}
+              >
+                <img
+                  src="/lupin/lupin_3.jpg"
+                  alt="Engr. Lester Jun Magboo (LupinXBT)"
+                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 block"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
+                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">01 / Full Profile</span>
+                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                    3P Strategist & Consultant
+                  </span>
+                </div>
+              </div>
+
+              {/* Image 2 in Collage — Cropped to cover Binance logo on shirt */}
+              <div
+                className="relative h-[380px] overflow-hidden group cursor-pointer"
+                onClick={() => setLightbox("/lupin/lupin_1.jpg")}
+              >
+                <img
+                  src="/lupin/lupin_1.jpg"
+                  alt="LupinXBT Portrait"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 block scale-110"
+                  style={{ objectPosition: "center 5%" }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
+                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">02 / Executive Headshot</span>
+                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                    Engr. Lester Jun Magboo (LupinXBT)
+                  </span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -417,6 +503,36 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal for Full Image Maximization */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 bg-[#0A192F]/95 backdrop-blur-md flex items-center justify-center p-5 cursor-zoom-out"
+          onClick={() => setLightbox(null)}
+        >
+          <div
+            className="relative max-w-[92vw] max-h-[92vh] border-[3px] border-[#C0C0C0] bg-[#112240] p-3 shadow-[12px_12px_0px_0px_#0A192F]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              className="absolute -top-4 -right-4 w-10 h-10 bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] flex items-center justify-center font-bold brut-btn-press z-30"
+              title="Close Full View"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={lightbox}
+              alt="Full maximized view"
+              className="max-w-full max-h-[85vh] object-contain block mx-auto"
+            />
+            <div className="mt-2 text-center font-mono text-[11px] uppercase tracking-widest text-[#C0C0C0]">
+              Full Resolution View — Click anywhere or ✕ to close
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

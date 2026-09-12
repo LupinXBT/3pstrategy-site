@@ -194,25 +194,39 @@ export default function People() {
                 </p>
               </div>
               
-              <div className="p-10 border-[3px] border-[#0A192F] bg-[#0A192F] h-full" style={{ marginLeft: "-3px" }}>
-                <MonoLabel color="#C0C0C0">Questions?</MonoLabel>
-                <h2
-                  className="font-bold text-[1.75rem] uppercase leading-tight tracking-tight mt-3 mb-6 text-[#F8F9FA]"
-                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  Still unsure<br />if this is right?
-                </h2>
-                <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-10 max-w-[40ch]">
-                  Book a 30-minute discovery call. We'll work out whether your problem is one an audit solves, what scope makes sense, and what it would cost to find out properly.
-                </p>
-                <a
-                  href="https://calendly.com/lupinxbt-fw3/30min?month"
-                  className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                    bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
-                  style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  Book a Call <ArrowRight className="w-4 h-4" />
-                </a>
+              <div className="border-[3px] border-[#0A192F] bg-[#0A192F] h-full flex flex-col justify-between overflow-hidden" style={{ marginLeft: "-3px" }}>
+                <div className="relative w-full h-[220px] border-b-[3px] border-[#0A192F]">
+                  <img
+                    src="/lupin/lupin_3.jpg"
+                    alt="Engr. Lester Jun Magboo (LupinXBT)"
+                    className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500 block"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-[#0A192F] to-transparent">
+                    <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block">3P Strategist · LupinXBT</span>
+                  </div>
+                </div>
+                <div className="p-10 flex-1 flex flex-col justify-between">
+                  <div>
+                    <MonoLabel color="#C0C0C0">Questions?</MonoLabel>
+                    <h2
+                      className="font-bold text-[1.75rem] uppercase leading-tight tracking-tight mt-3 mb-6 text-[#F8F9FA]"
+                      style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                    >
+                      Still unsure<br />if this is right?
+                    </h2>
+                    <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8 max-w-[40ch]">
+                      Book a 30-minute discovery call. We'll work out whether your problem is one an audit solves, what scope makes sense, and what it would cost to find out properly.
+                    </p>
+                  </div>
+                  <a
+                    href="https://calendly.com/lupinxbt-fw3/30min"
+                    className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                      bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
+                    style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    Book a Call <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </ScrollReveal>

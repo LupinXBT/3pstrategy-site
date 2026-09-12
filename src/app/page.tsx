@@ -159,19 +159,41 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Right: audit cards — slide in from right */}
+          {/* Right: Strategist Spotlight Card — slides in from right */}
           <motion.div
-            className="hidden md:flex flex-col gap-0 relative"
+            className="hidden md:block relative"
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <AuditScoreCard index="01" title="Technical Due Diligence" score={87} label="High Risk" />
-            <div className="ml-8 mt-[-8px]">
-              <AuditScoreCard index="02" title="Architecture Review" score={92} label="Verified" />
-            </div>
-            <div className="ml-4 mt-[-8px]">
-              <AuditScoreCard index="03" title="Operational Readiness" score={61} label="3 Findings" />
+            <div
+              className="border-[3px] border-[#0A192F] bg-[#112240] p-4 brut-card"
+              style={{ boxShadow: "10px 10px 0 0 #0A192F" }}
+            >
+              <div className="relative w-full h-[380px] overflow-hidden border-[3px] border-[#0A192F] mb-4 group">
+                <img
+                  src="/lupin/lupin_3.jpg"
+                  alt="Engr. Lester Jun Magboo (LupinXBT)"
+                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 block"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
+                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">Lead 3P Strategist</span>
+                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block leading-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                    Engr. Lester Jun Magboo (LupinXBT)
+                  </span>
+                </div>
+              </div>
+              <div className="px-2 pb-2 flex items-center justify-between border-t-[2px] border-[#1a3158] pt-3">
+                <p className="font-mono text-[11px] text-[#C0C0C0] leading-snug m-0 max-w-[28ch]">
+                  Engineering-based due diligence & investment readiness
+                </p>
+                <Link
+                  href="/contact"
+                  className="font-mono text-[10px] uppercase font-bold tracking-wider text-[#F8F9FA] hover:text-[#C0C0C0] shrink-0"
+                >
+                  About →
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
