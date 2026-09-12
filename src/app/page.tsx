@@ -110,7 +110,7 @@ export default function Home() {
             </h1>
 
             <p className="text-[#C0C0C0] text-[clamp(1rem,1.5vw,1.2rem)] max-w-[52ch] leading-relaxed mb-8 font-mono">
-              The 3Ps Audit is operational and technical due diligence for tech projects, funds and grant programmes — built on Product, Process and People.
+              The 3Ps Audit is operational and technical due diligence for tech projects, funds and grant programs — built on Product, Process and People.
             </p>
 
             <motion.div
@@ -349,7 +349,7 @@ export default function Home() {
             {[
               { title: "Investors & VCs", desc: "Validate technical claims before committing capital. Know exactly where execution risk sits.", tag: "Pre-Investment" },
               { title: "Founders", desc: "Identify weaknesses before an investor does. Enter due diligence with confidence.", tag: "Investment Ready" },
-              { title: "Grant Programmes", desc: "Ensure funded projects deliver. Structured assessment aligned to programme milestones.", tag: "Compliance" },
+              { title: "Grant Programs", desc: "Ensure funded projects deliver. Structured assessment aligned to program milestones.", tag: "Compliance" },
             ].map(({ title, desc, tag }) => (
               <StaggerItem key={title}>
                 <div

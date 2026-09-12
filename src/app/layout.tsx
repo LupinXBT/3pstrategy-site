@@ -21,7 +21,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "3Ps Audit — Investment-Readiness Due Diligence | 3P Strategy",
   description:
-    "Operational and technical due diligence for tech projects, funds and grant programmes — built on the 3Ps framework: Product, Process, People.",
+    "Operational and technical due diligence for tech projects, funds and grant programs — built on the 3Ps framework: Product, Process, People.",
 };
 
 export default function RootLayout({

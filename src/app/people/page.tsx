@@ -43,15 +43,15 @@ const audiences = [
   },
   {
     num: "03",
-    title: "Grant & Incubator Programmes",
+    title: "Grant & Incubator Programs",
     tag: "Milestone Compliance",
     accent: "#C0C0C0",
     problems: [
       "Funded projects need structured progress assessment against milestones",
-      "Programme managers lack the technical depth to evaluate deliverables",
+      "Program managers lack the technical depth to evaluate deliverables",
       "Risk exposure from underperforming or misaligned projects is unclear",
     ],
-    outcome: "A consistent, evidence-based assessment framework applied across portfolio projects — with findings calibrated to programme milestones and reporting requirements.",
+    outcome: "A consistent, evidence-based assessment framework applied across portfolio projects — with findings calibrated to program milestones and reporting requirements.",
   },
 ];
 

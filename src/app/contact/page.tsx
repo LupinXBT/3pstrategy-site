@@ -44,11 +44,11 @@ const whyWork = [
 ];
 
 const roles = [
-  "Co-founder — Web3 Bacolod",
-  "Senior investment analyst — digital asset research",
+  "Head of Business Development and Strategic Partnerships",
+  "Senior Investment Analyst",
   "Business development manager and executive roles",
   "Core member, contributor and moderator across protocols",
-  "Project technical assistant — DOST Region VI",
+  "Project Technical Assistant",
   "Instrumentation technician — large-scale manufacturing",
 ];
 
@@ -260,7 +260,7 @@ export default function Contact() {
               {/* Roles & Credentials column */}
               <div className="border-[3px] border-[#0A192F] bg-[#112240] h-full" style={{ marginLeft: "-3px" }}>
                 <div className="p-8 border-b-[3px] border-[#0A192F]">
-                  <MonoLabel color="#708090">Selected Roles</MonoLabel>
+                  <MonoLabel color="#708090">Experiences</MonoLabel>
                   <ul className="mt-4 space-y-3 list-none p-0 m-0">
                     {roles.map((r) => (
                       <li key={r} className="flex gap-3 font-mono text-[12px] text-[#C0C0C0] leading-relaxed">
@@ -453,7 +453,7 @@ export default function Contact() {
                       >
                         <option value="founder">Founder / operator</option>
                         <option value="investor">VC or angel investor</option>
-                        <option value="programme">Grant, incubator or accelerator</option>
+                        <option value="program">Grant, incubator or accelerator</option>
                         <option value="other">Other</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-[#708090]">
