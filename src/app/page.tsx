@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ───────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex items-center border-b-[3px] border-[#0A192F] overflow-hidden">
+      <section className="relative min-h-[92vh] pt-32 pb-20 border-b-[3px] border-[#0A192F] overflow-x-hidden">
         {/* Giant parallax bg number */}
         <ParallaxText speed={0.4} className="absolute right-0 top-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
           <span
@@ -84,14 +84,14 @@ export default function Home() {
           </span>
         </ParallaxText>
 
-        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 py-20 grid md:grid-cols-[1fr_480px] gap-16 items-center">
+        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: headline — slides in from left */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="inline-flex items-center gap-3 mb-6 border-[3px] border-[#C0C0C0] px-3 py-1.5"
+            <div className="inline-flex items-center gap-3 mb-8 border-[3px] border-[#C0C0C0] px-3 py-1.5"
                  style={{ boxShadow: "4px 4px 0 0 #0A192F" }}>
               <span className="w-2 h-2 rounded-full bg-[#C0C0C0] shrink-0" aria-hidden="true" />
               <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#C0C0C0]">
@@ -100,40 +100,36 @@ export default function Home() {
             </div>
 
             <h1
-              className="font-extralight text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[1.05] tracking-tight text-[#F8F9FA] mb-6"
+              className="font-extralight text-[clamp(2rem,4vw,4rem)] leading-[1.1] tracking-tight text-[#F8F9FA] mb-6 max-w-[20ch]"
               style={{ fontFamily: "var(--font-sora), sans-serif" }}
             >
-              <TextReveal text="From pilot launch" />
-              <br />
-              <TextReveal text="to an investment-" delay={0.2} />
-              <br />
-              <TextReveal text="ready system." delay={0.4} />
+              <TextReveal text="From pilot launch to an investment-ready system." />
             </h1>
 
-            <p className="text-[#C0C0C0] text-[clamp(1rem,1.5vw,1.15rem)] max-w-[54ch] leading-relaxed mb-8 font-mono">
+            <p className="text-[#C0C0C0] text-[clamp(0.95rem,1.1vw,1.1rem)] max-w-[55ch] leading-relaxed mb-10 font-extralight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
               Most projects do not fail on the idea. They fail on what sits underneath it — undocumented controls,
               single points of failure, governance that exists on paper, roadmaps that quietly slip.{" "}
-              <strong className="text-[#F8F9FA]">The 3Ps Audit finds it first.</strong>
+              <strong className="text-[#F8F9FA] font-bold">The 3Ps Audit finds it first.</strong>
             </p>
 
             <motion.div
-              className="flex flex-wrap gap-0 items-start"
+              className="flex flex-wrap gap-4 items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
               <Link
                 href="/product"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[12px] tracking-[0.1em] uppercase
                   bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
-                style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+                style={{ boxShadow: "4px 4px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
               >
                 See what the audit covers
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="https://calendly.com/lupinxbt-fw3/30min?month"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[12px] tracking-[0.1em] uppercase
                   bg-transparent text-[#F8F9FA] border-[3px] border-[#112240] hover:border-[#F8F9FA] transition-colors"
                 style={{ fontFamily: "var(--font-sora), sans-serif" }}
               >
@@ -141,66 +137,44 @@ export default function Home() {
               </a>
             </motion.div>
 
-            <p className="font-mono text-[11px] text-[#708090] mt-5 tracking-wide">
-              Engineering background · 10+ years delivery · Grant and VC-side diligence experience
+            <p className="font-mono text-[10px] text-[#708090] mt-8 tracking-[0.1em] uppercase">
+              Engineering background · 10+ years delivery · VC diligence experience
             </p>
 
             {/* Stats row */}
             <motion.div
-              className="flex flex-wrap gap-0 mt-12"
+              className="flex flex-wrap gap-0 mt-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.6 }}
             >
               {[
                 { num: "3", label: "Core Pillars" },
-                { num: "72h", label: "Typical Turnaround" },
+                { num: "1–2w", label: "Typical Turnaround" },
                 { num: "NDA", label: "On Request" },
               ].map(({ num, label }) => (
-                <div key={label} className="border-l-[3px] border-[#C0C0C0] pl-4 pr-8 py-2">
-                  <p className="font-bold text-[2rem] leading-none text-[#F8F9FA] m-0"
+                <div key={label} className="border-l-[3px] border-[#112240] pl-4 pr-8 py-1">
+                  <p className="font-bold text-[1.75rem] leading-none text-[#F8F9FA] m-0"
                      style={{ fontFamily: "var(--font-sora), sans-serif" }}>{num}</p>
-                  <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-[#708090] mt-1 m-0">{label}</p>
+                  <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-[#708090] mt-1 m-0">{label}</p>
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right: Strategist Spotlight Card — slides in from right */}
+          {/* Right: Clean Logo */}
           <motion.div
-            className="hidden md:block relative"
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="hidden lg:flex relative items-center justify-center h-full w-full"
+            initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div
-              className="border-[3px] border-[#0A192F] bg-[#112240] p-4 brut-card"
-              style={{ boxShadow: "10px 10px 0 0 #0A192F" }}
-            >
-              <div className="relative w-full h-[380px] overflow-hidden border-[3px] border-[#0A192F] mb-4 group">
-                <img
-                  src="/lupin/lupin_3.jpg"
-                  alt="Engr. Lester Jun Magboo (LupinXBT)"
-                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 block"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
-                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">Lead 3P Strategist</span>
-                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block leading-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-                    Engr. Lester Jun Magboo (LupinXBT)
-                  </span>
-                </div>
-              </div>
-              <div className="px-2 pb-2 flex items-center justify-between border-t-[2px] border-[#1a3158] pt-3">
-                <p className="font-mono text-[11px] text-[#C0C0C0] leading-snug m-0 max-w-[28ch]">
-                  Engineering-based due diligence & investment readiness
-                </p>
-                <Link
-                  href="/contact"
-                  className="font-mono text-[10px] uppercase font-bold tracking-wider text-[#F8F9FA] hover:text-[#C0C0C0] shrink-0"
-                >
-                  About →
-                </Link>
-              </div>
+            <div className="w-[340px] h-[340px] xl:w-[420px] xl:h-[420px] opacity-90">
+              <img
+                src="/3P-Strategy-Brand/svg/3p-mark-white.svg"
+                alt="3P Strategy Logo"
+                className="w-full h-full object-contain drop-shadow-2xl"
+              />
             </div>
           </motion.div>
         </div>

@@ -17,64 +17,38 @@ function MonoLabel({ children, color = "#C0C0C0" }: { children: React.ReactNode;
 const phases = [
   {
     num: "01",
-    title: "Brief & Scope",
-    duration: "Day 1",
-    desc: "30-minute discovery call to understand the project, timeline and what a useful result looks like. NDA signed before any substantive information is exchanged. Scope agreed in writing.",
+    title: "Kickoff & Access",
+    duration: "Days 1–2",
+    desc: "Scope confirmed, NDA signed, and a secure shared folder created for documents. No production access unless required.",
     accent: "#C0C0C0",
   },
   {
     num: "02",
-    title: "Document Review",
-    duration: "Days 1–3",
-    desc: "Whitepaper, technical documentation, codebase access, tokenomics model, governance documents and public on-chain data are reviewed systematically. Gaps logged as preliminary findings.",
+    title: "Technical Deep-Dive",
+    duration: "Days 2–5",
+    desc: "Technical deep-dive (architecture, financial, workflow).",
     accent: "#708090",
   },
   {
     num: "03",
-    title: "Technical Deep-Dive",
-    duration: "Days 3–7",
-    desc: "Architecture review, smart-contract analysis, security surface assessment and infrastructure examination. Each finding is assigned a severity level with supporting evidence and context.",
+    title: "Stakeholder Interviews",
+    duration: "Days 4–8",
+    desc: "Targeted interviews with key personnel and community stakeholders to separate paper governance from reality.",
     accent: "#C0C0C0",
   },
   {
     num: "04",
-    title: "Team & Process",
-    duration: "Days 5–8",
-    desc: "Founder and advisor backgrounds verified. Token vesting, incentive structures and governance arrangements stress-tested. Operational processes and treasury controls assessed.",
+    title: "Scoring & Drafting",
+    duration: "Days 8–10",
+    desc: "Dimensions scored and findings documented by severity and impact. A preliminary draft is shared for factual corrections.",
     accent: "#F8F9FA",
   },
   {
     num: "05",
-    title: "Report Compilation",
-    duration: "Days 8–10",
-    desc: "Findings are compiled into a structured report with an executive summary, detailed technical findings, remediation guidance and a risk register. Delivered as PDF and editable format.",
+    title: "Delivery & Walkthrough",
+    duration: "Days 10–14",
+    desc: "Final report, risk register, and execution roadmap delivered, followed by a live review call with your stakeholders.",
     accent: "#C0C0C0",
-  },
-  {
-    num: "06",
-    title: "Findings Walkthrough",
-    duration: "Day 10–12",
-    desc: "One follow-up call to walk through findings, answer questions and discuss remediation priorities. Additional calls available on request.",
-    accent: "#708090",
-  },
-];
-
-const principles = [
-  {
-    title: "Evidence-First",
-    desc: "Every finding is linked to a specific artefact, transaction, document or on-chain event. Assertions without evidence are not findings.",
-  },
-  {
-    title: "Severity is Honest",
-    desc: "Critical means capital is at immediate risk. High means it will be if unaddressed. Severity is not inflated to make a report look thorough.",
-  },
-  {
-    title: "Scope Integrity",
-    desc: "If something outside scope is material, it gets flagged clearly — not buried or ignored to stay within agreed boundaries.",
-  },
-  {
-    title: "No Conflict of Interest",
-    desc: "No advisory tokens, no referral fees from the projects being audited. The report serves the person who commissioned it.",
   },
 ];
 
@@ -111,7 +85,7 @@ export default function Process() {
               <TextReveal text="Actually Works." delay={0.3} />
             </h1>
             <p className="font-mono text-[#C0C0C0] text-[1rem] max-w-[60ch] leading-relaxed mb-8">
-              Six structured phases. Typically 10–14 days. Every step documented, every finding evidenced.
+              Five structured phases. Typically 1–2 weeks. Every step documented, every finding evidenced.
             </p>
           </motion.div>
         </div>
@@ -125,12 +99,12 @@ export default function Process() {
             {/* Left: Sticky Info */}
             <div className="md:sticky md:top-32">
               <ScrollReveal>
-                <MonoLabel color="#C0C0C0">Phases / 01—06</MonoLabel>
+                <MonoLabel color="#C0C0C0">Phases / 01—05</MonoLabel>
                 <h2
                   className="font-bold text-[clamp(2rem,3.5vw,3.5rem)] uppercase leading-tight tracking-tight mt-2 mb-6 text-[#F8F9FA]"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Six Phases.<br />Zero Shortcuts.
+                  Five Phases.<br />Zero Shortcuts.
                 </h2>
                 <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed max-w-[40ch]">
                   The methodology is designed to be systematic and repeatable, ensuring that every claim is verified and every finding is supported by evidence.
@@ -174,46 +148,6 @@ export default function Process() {
         </div>
       </section>
 
-      {/* ── PRINCIPLES ────────────────────────────────── */}
-      <section className="py-24 border-b-[3px] border-[#0A192F]">
-        <div className="w-full max-w-[1280px] mx-auto px-5">
-          <ScrollReveal>
-            <MonoLabel color="#C0C0C0">Methodology</MonoLabel>
-            <h2
-              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] uppercase leading-tight tracking-tight mt-2 mb-12 text-[#F8F9FA]"
-              style={{ fontFamily: "var(--font-sora), sans-serif" }}
-            >
-              The Principles<br />Behind the Work.
-            </h2>
-          </ScrollReveal>
-          
-          <StaggerContainer className="grid md:grid-cols-4 gap-0" stagger={0.1}>
-            {principles.map(({ title, desc }, i) => (
-              <StaggerItem key={title}>
-                <div
-                  className="p-8 border-[3px] border-[#0A192F] bg-[#0A192F] h-full brut-card hover:bg-[#112240]"
-                  style={{ marginRight: "-3px" }}
-                >
-                  <span
-                    className="font-bold text-[2.5rem] leading-none text-[#C0C0C0] block mb-4"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3
-                    className="font-bold text-[1.125rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                  >
-                    {title}
-                  </h3>
-                  <p className="font-mono text-[12px] text-[#C0C0C0] leading-relaxed m-0">{desc}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
       {/* ── TIMELINE SNAPSHOT ─────────────────────────── */}
       <section className="py-24 border-b-[3px] border-[#0A192F]">
         <div className="w-full max-w-[1280px] mx-auto px-5">
@@ -223,7 +157,7 @@ export default function Process() {
               className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] uppercase leading-tight tracking-tight mt-2 mb-12 text-[#F8F9FA]"
               style={{ fontFamily: "var(--font-sora), sans-serif" }}
             >
-              Typical Engagement.
+              Typical Turnaround.
             </h2>
           </ScrollReveal>
           
@@ -234,12 +168,11 @@ export default function Process() {
             >
               <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] gap-x-6 gap-y-0">
                 {[
-                  { day: "Day 1", event: "Discovery call, NDA, scope agreed" },
-                  { day: "Day 1–3", event: "Document review and data room access" },
-                  { day: "Day 3–7", event: "Technical deep-dive (architecture, contracts, security)" },
-                  { day: "Day 5–8", event: "Team, process and governance assessment" },
-                  { day: "Day 8–10", event: "Report compilation and internal review" },
-                  { day: "Day 10–12", event: "Findings delivered and walkthrough call" },
+                  { day: "Days 1–2", event: "Kickoff, scope confirmed, and access granted" },
+                  { day: "Days 2–5", event: "Technical deep-dive (architecture, financial, workflow)" },
+                  { day: "Days 4–8", event: "Stakeholder interviews" },
+                  { day: "Days 8–10", event: "Scoring and drafting" },
+                  { day: "Days 10–14", event: "Delivery and walkthrough" },
                 ].map(({ day, event }, i, arr) => (
                   <div key={day} className="contents group">
                     <div className={`py-5 border-r-[3px] border-[#C0C0C0] pr-4 ${i === arr.length - 1 ? "" : "border-b-[3px] border-b-[#112240]"}`}>

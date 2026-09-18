@@ -139,7 +139,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-wrap gap-4 justify-between items-center pt-6 font-mono text-[11px] text-[#708090] uppercase tracking-wider">
           <p className="m-0">© {currentYear} 3P Strategy · LupinXBT Tech Solutions.</p>
-          <p className="m-0">Independent advisory. Not investment, legal or tax advice.</p>
+          <p className="m-0">Independent consultancy. Not legal or tax advice.</p>
         </div>
       </div>
     </footer>

@@ -22,7 +22,6 @@ const audiences = [
     accent: "#C0C0C0",
     problems: [
       "Technical claims in the pitch deck are unverified",
-      "Smart-contract risk is opaque without an internal engineering team",
       "Team backgrounds rely on self-reported information",
       "Governance and token vesting terms are complex to parse",
     ],
@@ -56,10 +55,10 @@ const audiences = [
 ];
 
 const notForYou = [
-  "You want legal or financial advice, not an operational assessment",
+  "You want legal or tax advice, not an operational assessment",
   "You need a formal security certification or compliance stamp",
   "You want someone to validate a decision that has already been made",
-  "The project is pre-idea or has no artefacts to review",
+  "The project is pre-idea or has no products or services to review",
 ];
 
 export default function People() {
