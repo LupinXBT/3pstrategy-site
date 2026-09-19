@@ -26,7 +26,7 @@ const phases = [
     num: "02",
     title: "Technical Deep-Dive",
     duration: "Days 2–5",
-    desc: "Technical deep-dive (architecture, financial, workflow).",
+    desc: "Business model review, financial or runway assessment, and workflow evaluation. Each finding is assigned a risk and severity level from supporting evidence and context.",
     accent: "#708090",
   },
   {
