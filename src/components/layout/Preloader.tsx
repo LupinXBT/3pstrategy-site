@@ -25,34 +25,57 @@ export default function Preloader() {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
           {/* Main Logo Container */}
-          <div className="relative w-[140px] h-[140px]">
-            {/* Top Circle */}
+          <div className="relative w-[140px] h-[140px] flex items-center justify-center">
+            
+            {/* The 3 Combining Circles */}
+            <motion.div 
+              className="absolute inset-0"
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ delay: 1.05, duration: 0.15 }}
+            >
+              {/* Top Circle */}
+              <motion.div
+                className="absolute w-[72px] h-[72px] border-[6px] border-[#F8F9FA] rounded-full"
+                initial={{ top: "-40%", left: "50%", x: "-50%", opacity: 0, scale: 0.8 }}
+                animate={{ top: "8%", left: "50%", x: "-50%", opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.1 }}
+              />
+              {/* Bottom Left Circle */}
+              <motion.div
+                className="absolute w-[72px] h-[72px] border-[6px] border-[#F8F9FA] rounded-full"
+                initial={{ bottom: "-40%", left: "-20%", opacity: 0, scale: 0.8 }}
+                animate={{ bottom: "15%", left: "12%", opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.25 }}
+              />
+              {/* Bottom Right Circle */}
+              <motion.div
+                className="absolute w-[72px] h-[72px] border-[6px] border-[#F8F9FA] rounded-full"
+                initial={{ bottom: "-40%", right: "-20%", opacity: 0, scale: 0.8 }}
+                animate={{ bottom: "15%", right: "12%", opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.4 }}
+              />
+            </motion.div>
+
+            {/* The Actual SVG Logo (Pops in after combining) */}
             <motion.div
-              className="absolute w-[72px] h-[72px] border-[6px] border-[#F8F9FA] rounded-full drop-shadow-[0_0_8px_rgba(248,249,250,0.3)]"
-              initial={{ top: "-40%", left: "50%", x: "-50%", opacity: 0, scale: 0.8 }}
-              animate={{ top: "8%", left: "50%", x: "-50%", opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.1 }}
-            />
-            {/* Bottom Left Circle */}
-            <motion.div
-              className="absolute w-[72px] h-[72px] border-[6px] border-[#F8F9FA] rounded-full drop-shadow-[0_0_8px_rgba(248,249,250,0.3)]"
-              initial={{ bottom: "-40%", left: "-20%", opacity: 0, scale: 0.8 }}
-              animate={{ bottom: "15%", left: "12%", opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.25 }}
-            />
-            {/* Bottom Right Circle */}
-            <motion.div
-              className="absolute w-[72px] h-[72px] border-[6px] border-[#F8F9FA] rounded-full drop-shadow-[0_0_8px_rgba(248,249,250,0.3)]"
-              initial={{ bottom: "-40%", right: "-20%", opacity: 0, scale: 0.8 }}
-              animate={{ bottom: "15%", right: "12%", opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.4 }}
-            />
+              className="absolute w-[115px] h-[115px]"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: [0.8, 1.15, 1] }}
+              transition={{ delay: 1.05, duration: 0.5, ease: "backOut" }}
+            >
+              <img 
+                src="/3P-Strategy-Brand/svg/3p-mark-white.svg" 
+                alt="3P Logo" 
+                className="w-full h-full object-contain drop-shadow-[0_0_12px_rgba(248,249,250,0.5)]" 
+              />
+            </motion.div>
 
             {/* Shockwave / Flash Effect when they lock together */}
             <motion.div
               className="absolute inset-0 bg-[#F8F9FA] rounded-full mix-blend-overlay blur-xl"
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: [0, 0.6, 0], scale: [0.5, 1.4, 1.8] }}
+              animate={{ opacity: [0, 0.8, 0], scale: [0.5, 1.5, 2.2] }}
               transition={{ duration: 1, delay: 1.0, ease: "easeOut" }}
             />
           </div>
