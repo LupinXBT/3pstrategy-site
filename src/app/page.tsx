@@ -169,13 +169,17 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="w-[340px] h-[340px] xl:w-[420px] xl:h-[420px] opacity-90">
+            <motion.div 
+              className="w-[340px] h-[340px] xl:w-[420px] xl:h-[420px] opacity-90"
+              animate={{ y: [-15, 15, -15] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            >
               <img
                 src="/3P-Strategy-Brand/svg/3p-mark-white.svg"
                 alt="3P Strategy Logo"
-                className="w-full h-full object-contain drop-shadow-2xl"
+                className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(248,249,250,0.15)]"
               />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
