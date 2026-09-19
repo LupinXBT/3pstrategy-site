@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ───────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] pt-32 pb-20 border-b-[3px] border-[#0A192F] overflow-x-hidden">
+      <section className="relative min-h-[92vh] flex items-center pt-16 pb-16 border-b-[3px] border-[#0A192F] overflow-x-hidden">
         {/* Giant parallax bg number */}
         <ParallaxText speed={0.4} className="absolute right-0 top-1/2 -translate-y-1/2 select-none pointer-events-none z-0">
           <span
@@ -91,13 +91,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="inline-flex items-center gap-3 mb-8 border-[3px] border-[#C0C0C0] px-3 py-1.5"
-                 style={{ boxShadow: "4px 4px 0 0 #0A192F" }}>
-              <span className="w-2 h-2 rounded-full bg-[#C0C0C0] shrink-0" aria-hidden="true" />
-              <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#C0C0C0]">
-                Taking new engagements for Q4 2026
-              </span>
-            </div>
+
 
             <h1
               className="font-extralight text-[clamp(2rem,4vw,4rem)] leading-[1.1] tracking-tight text-[#F8F9FA] mb-6 max-w-[20ch]"

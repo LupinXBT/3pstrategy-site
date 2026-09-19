@@ -24,6 +24,8 @@ export const metadata: Metadata = {
     "Operational and technical due diligence for tech projects, funds and grant programs — built on the 3Ps framework: Product, Process, People.",
 };
 
+import Preloader from "@/components/layout/Preloader";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,6 +37,7 @@ export default function RootLayout({
       className={`${sora.variable} ${plexMono.variable} h-full scroll-smooth scroll-pt-[88px]`}
     >
       <body className="min-h-full flex flex-col font-sans bg-[#0A192F] text-[#F8F9FA]">
+        <Preloader />
         <Header />
         <main id="main" className="flex-1">
           {children}
