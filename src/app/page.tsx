@@ -106,18 +106,6 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {/* Animated badge */}
-              <motion.div
-                className="inline-flex items-center gap-2 mb-7 px-3 py-1.5 rounded-full border border-[#0275D8]/40 bg-[#0275D8]/10 backdrop-blur-sm"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0275D8] animate-pulse" />
-                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#0275D8]">
-                  Business Assessment Platform
-                </span>
-              </motion.div>
 
               <h1
                 className="font-bold text-[clamp(2.6rem,4.8vw,4.8rem)] leading-[1.03] tracking-tight text-[#F8F9FA] mb-6 max-w-[18ch]"
