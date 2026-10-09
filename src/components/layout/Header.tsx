@@ -23,7 +23,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-[#0A192F] border-b-[3px] border-[#0A192F]">
       <div className="w-full max-w-[1280px] mx-auto px-5 flex items-center justify-between h-[68px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 no-underline group">
+        <Link 
+          href="/" 
+          className="flex items-center gap-3 no-underline group"
+          onClick={(e) => {
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+        >
           <div className="w-9 h-9 border-[3px] border-[#C0C0C0] flex items-center justify-center"
                style={{ boxShadow: "3px 3px 0 0 #C0C0C0" }}>
             <Image src="/3P-Strategy-Brand/svg/3p-mark-white.svg" alt="3P Strategy" width={22} height={22} />
@@ -46,6 +55,12 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(e) => {
+                  if (active) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
                 className={`px-4 py-2 font-mono text-[12px] tracking-[0.12em] uppercase border-[3px] border-transparent transition-none
                   ${active
                     ? "bg-[#F8F9FA] text-[#0A192F] border-[#0A192F]"

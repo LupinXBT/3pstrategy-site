@@ -84,96 +84,102 @@ export default function Home() {
           </span>
         </ParallaxText>
 
-        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: headline — slides in from left */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-
-
-            <h1
-              className="font-extralight text-[clamp(2rem,4vw,4rem)] leading-[1.1] tracking-tight text-[#F8F9FA] mb-6 max-w-[20ch]"
-              style={{ fontFamily: "var(--font-sora), sans-serif" }}
-            >
-              <TextReveal text="From pilot launch to an investment-ready system." />
-            </h1>
-
-            <p className="text-[#C0C0C0] text-[clamp(0.95rem,1.1vw,1.1rem)] max-w-[55ch] leading-relaxed mb-10 font-extralight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-              Most projects do not fail on the idea. They fail on what sits underneath it — undocumented controls,
-              single points of failure, governance that exists on paper, roadmaps that quietly slip.{" "}
-              <strong className="text-[#F8F9FA] font-bold">The 3Ps Audit finds it first.</strong>
-            </p>
-
+        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 flex flex-col justify-center h-full">
+          {/* Top Half: Text and Logo */}
+          <div className="grid lg:grid-cols-[1fr_0.8fr] gap-12 lg:gap-16 items-center mb-16 mt-8">
+            {/* Left: headline — slides in from left */}
             <motion.div
-              className="flex flex-wrap gap-4 items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <Link
-                href="/product"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[12px] tracking-[0.1em] uppercase
-                  bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
-                style={{ boxShadow: "4px 4px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
-              >
-                See what the audit covers
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a
-                href="https://calendly.com/lupinxbt-fw3/30min?month"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[12px] tracking-[0.1em] uppercase
-                  bg-transparent text-[#F8F9FA] border-[3px] border-[#112240] hover:border-[#F8F9FA] transition-colors"
+              <h1
+                className="font-bold text-[clamp(2.5rem,4.5vw,4.5rem)] leading-[1.05] tracking-tight text-[#F8F9FA] mb-6 max-w-[20ch]"
                 style={{ fontFamily: "var(--font-sora), sans-serif" }}
               >
-                Book a 30-minute call →
-              </a>
+                <TextReveal text="A clear answer on whether a business can grow." />
+              </h1>
+
+              <p className="text-[#C0C0C0] text-[clamp(0.95rem,1.1vw,1.1rem)] max-w-[58ch] leading-relaxed mb-10 font-extralight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                3P Strategy assesses startups and MSMEs on three things: whether the market wants what they sell, whether the business can deliver it at a profit, and whether the team can run and grow it. You get a score, a plain verdict and a list of what to fix first.
+              </p>
+
+              <motion.div
+                className="flex flex-wrap gap-4 items-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+              >
+                <a
+                  href="https://calendly.com/lupinxbt-fw3/30min?month"
+                  className="inline-flex items-center justify-center px-6 py-3.5 font-bold text-[14px] 
+                    bg-[#0275D8] text-white rounded-[4px] hover:bg-[#025aa5] transition-colors"
+                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  Book a 30-minute call
+                </a>
+                <Link
+                  href="/product"
+                  className="inline-flex items-center justify-center px-6 py-3.5 font-bold text-[14px] 
+                    bg-transparent text-[#F8F9FA] rounded-[4px] border border-[#30363D] hover:bg-[#112240] transition-colors"
+                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  See how businesses are scored
+                </Link>
+              </motion.div>
             </motion.div>
 
-            <p className="font-mono text-[10px] text-[#708090] mt-8 tracking-[0.1em] uppercase">
-              Engineering background · 10+ years delivery · VC diligence experience
-            </p>
-
-            {/* Stats row */}
+            {/* Right: Clean Logo */}
             <motion.div
-              className="flex flex-wrap gap-0 mt-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
+              className="hidden lg:flex relative items-center justify-center h-full w-full"
+              initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              {[
-                { num: "3", label: "Core Pillars" },
-                { num: "1–2w", label: "Typical Turnaround" },
-                { num: "NDA", label: "On Request" },
-              ].map(({ num, label }) => (
-                <div key={label} className="border-l-[3px] border-[#112240] pl-4 pr-8 py-1">
-                  <p className="font-bold text-[1.75rem] leading-none text-[#F8F9FA] m-0"
-                     style={{ fontFamily: "var(--font-sora), sans-serif" }}>{num}</p>
-                  <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-[#708090] mt-1 m-0">{label}</p>
-                </div>
-              ))}
+              <motion.div 
+                className="w-[340px] h-[340px] xl:w-[420px] xl:h-[420px] opacity-90"
+                animate={{ y: [-15, 15, -15] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <img
+                  src="/3P-Strategy-Brand/svg/3p-mark-white.svg"
+                  alt="3P Strategy Logo"
+                  className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(248,249,250,0.15)]"
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Right: Clean Logo */}
-          <motion.div
-            className="hidden lg:flex relative items-center justify-center h-full w-full"
-            initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          {/* Bottom Half: 3 Cards */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="w-full mt-4"
           >
-            <motion.div 
-              className="w-[340px] h-[340px] xl:w-[420px] xl:h-[420px] opacity-90"
-              animate={{ y: [-15, 15, -15] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <img
-                src="/3P-Strategy-Brand/svg/3p-mark-white.svg"
-                alt="3P Strategy Logo"
-                className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(248,249,250,0.15)]"
-              />
-            </motion.div>
+            <h3 className="text-[#C0C0C0] font-bold text-[16px] mb-4 tracking-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>Choose the one that describes you</h3>
+            <div className="grid md:grid-cols-3 gap-4">
+               {/* Card 1 */}
+               <Link href="/people" className="block border border-[#30363D] hover:border-[#0275D8] rounded-[6px] p-6 bg-[#112240]/40 hover:bg-[#112240] transition-colors cursor-pointer group relative overflow-hidden">
+                 <div className="absolute inset-0 bg-gradient-to-r from-[#0275D8]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <h4 className="font-bold text-[#F8F9FA] text-[16px] mb-2 tracking-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>I run or am building a business</h4>
+                 <p className="text-[#C0C0C0] text-[13px] leading-relaxed m-0 font-light">Startup founders and MSME owners preparing to raise, borrow or apply</p>
+               </Link>
+               
+               {/* Card 2 */}
+               <Link href="/people" className="block border border-[#30363D] hover:border-[#0275D8] rounded-[6px] p-6 bg-[#112240]/40 hover:bg-[#112240] transition-colors cursor-pointer group relative overflow-hidden">
+                 <div className="absolute inset-0 bg-gradient-to-r from-[#0275D8]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <h4 className="font-bold text-[#F8F9FA] text-[16px] mb-2 tracking-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>I invest in or lend to businesses</h4>
+                 <p className="text-[#C0C0C0] text-[13px] leading-relaxed m-0 font-light">VCs, angels, lenders and corporate partners</p>
+               </Link>
+
+               {/* Card 3 */}
+               <Link href="/people" className="block border border-[#30363D] hover:border-[#0275D8] rounded-[6px] p-6 bg-[#112240]/40 hover:bg-[#112240] transition-colors cursor-pointer group relative overflow-hidden">
+                 <div className="absolute inset-0 bg-gradient-to-r from-[#0275D8]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <h4 className="font-bold text-[#F8F9FA] text-[16px] mb-2 tracking-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>I run a programme</h4>
+                 <p className="text-[#C0C0C0] text-[13px] leading-relaxed m-0 font-light">Grants, incubators, accelerators and MSME development programmes</p>
+               </Link>
+            </div>
           </motion.div>
         </div>
       </section>
