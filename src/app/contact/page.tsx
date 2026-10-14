@@ -109,7 +109,7 @@ export default function Contact() {
               Book a 30-minute discovery call, or send the brief first. If an audit is not the right instrument, I'll say so on the call.
             </p>
             <motion.div
-              className="flex flex-wrap gap-0"
+              className="flex flex-wrap gap-0 mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
@@ -122,6 +122,28 @@ export default function Contact() {
               >
                 Book a 30-min Call <ArrowRight className="w-4 h-4" />
               </a>
+            </motion.div>
+
+            <motion.div
+              className="flex flex-wrap gap-0 mt-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              {[
+                { num: "10+", unit: "years",   label: "Project & Program Management" },
+                { num: "6+",  unit: "years",   label: "Business Strategy & Development" },
+                { num: "5+",  unit: "years",   label: "Ecosystem & Community Building" },
+                { num: "20+", unit: "/ month", label: "Early-stage Projects Evaluated" },
+              ].map(({ num, unit, label }) => (
+                <div key={label} className="border-l-[3px] border-[#112240] pl-5 pr-10 py-2">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-bold text-[2rem] leading-none text-[#F8F9FA]" style={{ fontFamily: "var(--font-sora), sans-serif" }}>{num}</span>
+                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#C0C0C0]">{unit}</span>
+                  </div>
+                  <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#708090] mt-1 m-0 leading-snug max-w-[16ch]">{label}</p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -533,6 +555,44 @@ export default function Contact() {
           </div>
         </div>
       )}
+      {/* ── NEXT STEP ─────────────────────────────────── */}
+      <section className="py-24 bg-[#0A192F] border-t-[3px] border-[#112240]">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <ScrollReveal>
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#708090]">Next Step</span>
+            <h2
+              className="font-bold text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-tight text-[#F8F9FA] mt-3 mb-5 max-w-[22ch]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              Ready to see the scope against your project?
+            </h2>
+            <p className="font-mono text-[#C0C0C0] text-[0.95rem] max-w-[55ch] leading-relaxed mb-10">
+              A 30-minute call is enough to size the audit, confirm what is in scope, and tell you whether it is worth doing at all.
+            </p>
+            <div className="flex flex-wrap gap-4 items-center">
+              <a
+                href="https://calendly.com/lupinxbt-fw3/30min?month"
+                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                  bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
+                style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+              >
+                Book a 30-Minute Call <ArrowRight className="w-4 h-4" />
+              </a>
+              <Link
+                href="/process"
+                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                  bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] transition-colors"
+                style={{ fontFamily: "var(--font-sora), sans-serif" }}
+              >
+                See the Process →
+              </Link>
+            </div>
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#708090] mt-8">
+              Confidential · NDA on Request · Typical Turnaround 1–2 Weeks
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
     </>
   );
 }

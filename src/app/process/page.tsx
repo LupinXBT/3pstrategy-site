@@ -228,6 +228,45 @@ export default function Process() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* ── NEXT STEP ─────────────────────────────────── */}
+      <section className="py-24 bg-[#0A192F] border-t-[3px] border-[#112240]">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <ScrollReveal>
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#708090]">Next Step</span>
+            <h2
+              className="font-bold text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-tight text-[#F8F9FA] mt-3 mb-5 max-w-[22ch]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              Ready to see who this is for?
+            </h2>
+            <p className="font-mono text-[#C0C0C0] text-[0.95rem] max-w-[55ch] leading-relaxed mb-10">
+              See which type of client gets the most from a 3P audit — founders, investors, or programme managers.
+            </p>
+            <div className="flex flex-wrap gap-4 items-center">
+              <Link
+                href="/people"
+                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                  bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
+                style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+              >
+                Who It&apos;s For <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                  bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] transition-colors"
+                style={{ fontFamily: "var(--font-sora), sans-serif" }}
+              >
+                Book a Call →
+              </Link>
+            </div>
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#708090] mt-8">
+              Confidential · NDA on Request · Typical Turnaround 1–2 Weeks
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
     </>
   );
 }
