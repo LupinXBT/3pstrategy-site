@@ -205,36 +205,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CREDENTIALS STRIP (with counters) ──────────── */}
-      <section className="border-b-[3px] border-[#0A192F] bg-[#112240]">
-        <div className="w-full max-w-[1280px] mx-auto px-5">
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4" stagger={0.1}>
-            {[
-              { num: 10, suffix: "+", unit: "years", label: "Project & Program Management" },
-              { num: 6, suffix: "+", unit: "years", label: "Business Strategy & Development" },
-              { num: 5, suffix: "+", unit: "years", label: "Ecosystem & Community Building" },
-              { num: 20, suffix: "+", unit: "/ month", label: "Early-stage Projects Evaluated" },
-            ].map(({ num, suffix, unit, label }, i) => (
-              <StaggerItem
-                key={label}
-                className={`py-8 px-6 flex flex-col gap-1 ${i < 3 ? "border-r-[3px] border-[#0A192F]" : ""} ${i < 2 ? "border-b-[3px] md:border-b-0 border-[#0A192F]" : ""}`}
-              >
-                <div className="flex items-baseline gap-1.5">
-                  <span className="font-bold text-[2.5rem] leading-none text-[#F8F9FA]" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-                    <AnimatedCounter target={num} suffix={suffix} duration={1.8} />
-                  </span>
-                  <span className="font-mono text-[11px] tracking-widest uppercase text-[#C0C0C0]">
-                    {unit}
-                  </span>
-                </div>
-                <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-[#708090] m-0 leading-snug">
-                  {label}
-                </p>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
 
       {/* ── MARQUEE ────────────────────────────────────── */}
       <div className="border-b-[3px] border-[#0A192F] bg-[#0A192F] py-4 overflow-hidden">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, X } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, TextReveal } from "@/components/animations/ScrollReveal";
+import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 import { ParallaxText } from "@/components/animations/ParallaxText";
 import { TiltCard } from "@/components/animations/TiltCard";
 import { motion } from "framer-motion";
@@ -124,28 +125,38 @@ export default function Contact() {
               </a>
             </motion.div>
 
-            <motion.div
-              className="flex flex-wrap gap-0 mt-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
-            >
-              {[
-                { num: "10+", unit: "years",   label: "Project & Program Management" },
-                { num: "6+",  unit: "years",   label: "Business Strategy & Development" },
-                { num: "5+",  unit: "years",   label: "Ecosystem & Community Building" },
-                { num: "20+", unit: "/ month", label: "Early-stage Projects Evaluated" },
-              ].map(({ num, unit, label }) => (
-                <div key={label} className="border-l-[3px] border-[#112240] pl-5 pr-10 py-2">
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="font-bold text-[2rem] leading-none text-[#F8F9FA]" style={{ fontFamily: "var(--font-sora), sans-serif" }}>{num}</span>
-                    <span className="font-mono text-[10px] tracking-widest uppercase text-[#C0C0C0]">{unit}</span>
-                  </div>
-                  <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#708090] mt-1 m-0 leading-snug max-w-[16ch]">{label}</p>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── CREDENTIALS STRIP ──────────────────────────── */}
+      <section className="border-b-[3px] border-[#0A192F] bg-[#112240]">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4" stagger={0.1}>
+            {[
+              { num: 10, suffix: "+", unit: "years",    label: "Project & Program Management" },
+              { num: 6,  suffix: "+", unit: "years",    label: "Business Strategy & Development" },
+              { num: 5,  suffix: "+", unit: "years",    label: "Ecosystem & Community Building" },
+              { num: 20, suffix: "+", unit: "/ month",  label: "Early-stage Projects Evaluated" },
+            ].map(({ num, suffix, unit, label }, i) => (
+              <StaggerItem
+                key={label}
+                className={`py-8 px-6 flex flex-col gap-1 ${i < 3 ? "border-r-[3px] border-[#0A192F]" : ""} ${i < 2 ? "border-b-[3px] md:border-b-0 border-[#0A192F]" : ""}`}
+              >
+                <div className="flex items-baseline gap-1.5">
+                  <span className="font-bold text-[2.5rem] leading-none text-[#F8F9FA]" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+                    <AnimatedCounter target={num} suffix={suffix} duration={1.8} />
+                  </span>
+                  <span className="font-mono text-[11px] tracking-widest uppercase text-[#C0C0C0]">
+                    {unit}
+                  </span>
+                </div>
+                <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-[#708090] m-0 leading-snug">
+                  {label}
+                </p>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
