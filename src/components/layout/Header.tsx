@@ -3,19 +3,33 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && !window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, [pathname]);
+
+  const handleNavClick = (href: string, active: boolean, e: React.MouseEvent) => {
+    if (active) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  };
+
   const links = [
     { href: "/", label: "Home" },
     { href: "/product", label: "Product" },
     { href: "/process", label: "Process" },
     { href: "/people", label: "People" },
-    { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -26,12 +40,7 @@ export default function Header() {
         <Link 
           href="/" 
           className="flex items-center gap-3 no-underline group"
-          onClick={(e) => {
-            if (pathname === "/") {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }
-          }}
+          onClick={(e) => handleNavClick("/", pathname === "/", e)}
         >
           <div className="w-9 h-9 border-[3px] border-[#C0C0C0] flex items-center justify-center"
                style={{ boxShadow: "3px 3px 0 0 #C0C0C0" }}>
@@ -55,12 +64,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => {
-                  if (active) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }
-                }}
+                onClick={(e) => handleNavClick(link.href, active, e)}
                 className={`px-4 py-2 font-mono text-[12px] tracking-[0.12em] uppercase border-[3px] border-transparent transition-none
                   ${active
                     ? "bg-[#F8F9FA] text-[#0A192F] border-[#0A192F]"
@@ -105,7 +109,10 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    handleNavClick(link.href, active, e);
+                  }}
                   className={`px-5 py-4 font-mono text-[12px] tracking-[0.12em] uppercase border-b-[3px] border-[#0A192F]
                     ${active ? "bg-[#F8F9FA] text-[#0A192F]" : "text-[#C0C0C0] hover:bg-[#112240]"}`}
                 >

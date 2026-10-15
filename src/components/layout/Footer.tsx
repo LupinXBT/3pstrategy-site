@@ -110,7 +110,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
+                <Link href="/contact#faq" className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
                   FAQ — Before you book
                 </Link>
               </li>
@@ -126,9 +126,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="mailto:3pstrategy@gmail.com"
+                <a href="mailto:lupinxbt@gmail.com"
                    className="block py-2 font-mono text-[12px] text-[#708090] hover:text-[#C0C0C0] transition-colors uppercase tracking-wider">
-                  3pstrategy@gmail.com
+                  lupinxbt@gmail.com
                 </a>
               </li>
             </ul>

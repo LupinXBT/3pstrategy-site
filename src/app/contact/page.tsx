@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, X, Plus } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, TextReveal } from "@/components/animations/ScrollReveal";
 import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 import { ParallaxText } from "@/components/animations/ParallaxText";
 import { TiltCard } from "@/components/animations/TiltCard";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 function MonoLabel({ children, color = "#C0C0C0" }: { children: React.ReactNode; color?: string }) {
@@ -70,6 +70,151 @@ const testimonials = [
     role: "Founder, Filipino Web3",
   },
 ];
+
+const talksAndEngagements = [
+  {
+    image: "/talks/emerging tech.jpg",
+    tag: "Emerging Tech",
+    title: "Conducted Seminar about Emerging Technologies and its use cases to Local Government",
+  },
+  {
+    image: "/talks/youth leaders.jpg",
+    tag: "Youth Leaders",
+    title: "Shared a talk about technology and innovation to youth leaders",
+  },
+  {
+    image: "/talks/hackmaster.jpg",
+    tag: "Hackmaster",
+    title: "Hackmaster during an AI startup and pitching competition",
+  },
+  {
+    image: "/talks/Coinw.jpg",
+    tag: "CoinW",
+    title: "Provided market insight and outlook during CoinW community meetup.",
+  },
+  {
+    image: "/talks/Startup 101.jpg",
+    tag: "Startup 101",
+    title: "Business Workshop and Startup 101 to Senior High School students",
+  },
+  {
+    image: "/talks/Organizer Train.jpg",
+    tag: "Organizer TRAIN",
+    title: "Organizer and facilitator of TRAIN (Transformative AI Network) 2026",
+  },
+  {
+    image: "/talks/Host binance.jpg",
+    tag: "Host Binance",
+    title: "Host and organizer of Binance local community meetup.",
+  },
+  {
+    image: "/talks/Cyberesec.jpg",
+    tag: "Cybersecurity",
+    title: "Speaker on cybersafety and security for students and professionals.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Is this confidential?",
+    a: "Yes. All findings, documents and communications stay strictly between you and me unless you choose to share the report with investors or a committee yourself. NDA on request before anything substantive is exchanged.",
+    accent: "#C0C0C0",
+  },
+  {
+    q: "Do you need admin access to our systems?",
+    a: "Only what the agreed scope requires. Most audits run from documentation, repositories and interviews rather than production access.",
+    accent: "#708090",
+  },
+  {
+    q: "Can this be used for a live raise or grant application?",
+    a: "Yes. Many clients commission the audit specifically to get ahead of investor or committee diligence, and use the report as a supporting document.",
+    accent: "#C0C0C0",
+  },
+  {
+    q: "What if the audit finds serious problems?",
+    a: "That is the point of doing it before capital moves. Every finding comes with a specific, prioritized fix and actionable recommendations — the report is a work plan, not a verdict.",
+    accent: "#F8F9FA",
+  },
+  {
+    q: "How long does it take, and what do you need from us?",
+    a: "One to two weeks from kickoff for a full audit. From your side: access to existing documentation, a repository walkthrough where relevant, and 30–60 minutes each with two or three key people.",
+    accent: "#C0C0C0",
+  },
+  {
+    q: "Can you run the audit while we are mid-raise?",
+    a: "Yes, and it is a common reason to commission one. The scope can be narrowed to the areas a specific investor or committee is most likely to probe, so the timeline fits inside your process.",
+    accent: "#708090",
+  },
+];
+
+function ContactFAQItem({ q, a, accent, index }: { q: string; a: string; accent: string; index: number }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+    >
+      <div
+        className="border-[3px] border-[#0A192F] bg-[#112240] mb-[-3px] overflow-hidden"
+        style={{ boxShadow: open ? `6px 6px 0 0 ${accent}` : "none", transition: "box-shadow 0.3s ease" }}
+      >
+        <button
+          onClick={() => setOpen(!open)}
+          className="w-full flex items-start justify-between gap-6 p-8 text-left group"
+          aria-expanded={open}
+        >
+          <div className="flex items-start gap-5">
+            <span
+              className="font-bold text-[1.25rem] leading-none shrink-0 mt-1 tabular-nums"
+              style={{ fontFamily: "var(--font-sora), sans-serif", color: accent }}
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span
+              className="font-bold text-[1.1rem] uppercase tracking-tight text-[#F8F9FA] leading-snug group-hover:text-[#C0C0C0] transition-colors"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              {q}
+            </span>
+          </div>
+          <span
+            className="shrink-0 mt-1 w-7 h-7 border-[2px] flex items-center justify-center transition-all duration-300"
+            style={{
+              borderColor: accent,
+              color: accent,
+              transform: open ? "rotate(45deg)" : "rotate(0deg)",
+            }}
+          >
+            <Plus className="w-4 h-4" />
+          </span>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              key="answer"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="px-8 pb-8 pl-[4.75rem]">
+                <div className="w-12 h-[3px] mb-5" style={{ backgroundColor: accent }} />
+                <p className="font-mono text-[14px] text-[#C0C0C0] leading-relaxed m-0 max-w-[70ch]">
+                  {a}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Contact() {
   const [lightbox, setLightbox] = useState<string | null>(null);
@@ -243,35 +388,13 @@ export default function Contact() {
       <section className="py-24 border-b-[3px] border-[#0A192F]">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
-            <div className="grid md:grid-cols-[340px_1fr_1fr] gap-0 items-stretch">
-
-              {/* Photo column — single big portrait */}
-              <div
-                className="border-[3px] border-[#0A192F] bg-[#112240] flex flex-col overflow-hidden relative group cursor-pointer"
-                style={{ minHeight: "520px" }}
-                onClick={() => setLightbox("/lupin/lupin_3.jpg")}
-                title="Click to expand portrait"
-              >
-                <img
-                  src="/lupin/lupin_3.jpg"
-                  alt="Engr. Lester Jun Magboo (LupinXBT)"
-                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 block"
-                  style={{ minHeight: "520px" }}
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
-                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">Lead 3P Strategist</span>
-                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block leading-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-                    Engr. Lester Jun Magboo
-                  </span>
-                  <span className="font-mono text-[11px] text-[#708090] block mt-0.5">LupinXBT</span>
-                </div>
-              </div>
+            <div className="grid md:grid-cols-2 gap-0 items-stretch">
 
               {/* Bio column */}
-              <div className="p-8 border-[3px] border-[#0A192F] bg-[#0A192F] h-full" style={{ marginLeft: "-3px" }}>
+              <div className="p-8 md:p-12 border-[3px] border-[#0A192F] bg-[#0A192F] h-full">
                 <MonoLabel color="#C0C0C0">About</MonoLabel>
                 <h2
-                  className="font-bold text-[clamp(1.25rem,2vw,1.75rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
+                  className="font-bold text-[clamp(1.5rem,2.5vw,2.25rem)] uppercase leading-tight tracking-tight mt-3 mb-4 text-[#F8F9FA]"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
                   Engr. Lester Jun Magboo
@@ -333,59 +456,57 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── PHOTO COLLAGE SHOWCASE ─────────────────────── */}
+      {/* ── TALKS & ENGAGEMENTS ────────────────────────── */}
       <section className="py-24 border-b-[3px] border-[#0A192F]">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
-            <MonoLabel color="#C0C0C0">Media & Profile</MonoLabel>
+            <MonoLabel color="#C0C0C0">Speaking & Community</MonoLabel>
             <h2
-              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] uppercase leading-tight tracking-tight mt-2 mb-12 text-[#F8F9FA]"
+              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] uppercase leading-tight tracking-tight mt-2 mb-4 text-[#F8F9FA]"
               style={{ fontFamily: "var(--font-sora), sans-serif" }}
             >
-              Gallery & Spotlight.
+              Talks, Workshops & Engagements.
             </h2>
-
-            <div className="grid md:grid-cols-2 gap-0 border-[3px] border-[#0A192F] bg-[#112240] brut-card" style={{ boxShadow: "10px 10px 0 0 #0A192F" }}>
-              {/* Image 1 in Collage */}
-              <div
-                className="relative h-[380px] border-b-[3px] md:border-b-0 md:border-r-[3px] border-[#0A192F] overflow-hidden group cursor-pointer"
-                onClick={() => setLightbox("/lupin/lupin_3.jpg")}
-              >
-                <img
-                  src="/lupin/lupin_3.jpg"
-                  alt="Engr. Lester Jun Magboo (LupinXBT)"
-                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 block"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
-                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">01 / Full Profile</span>
-                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-                    3P Strategist & Consultant
-                  </span>
-                </div>
-              </div>
-
-              {/* Image 2 in Collage — Cropped to cover Binance logo on shirt */}
-              <div
-                className="relative h-[380px] overflow-hidden group cursor-pointer"
-                onClick={() => setLightbox("/lupin/lupin_1.jpg")}
-              >
-                <img
-                  src="/lupin/lupin_1.jpg"
-                  alt="LupinXBT Portrait"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 block scale-110"
-                  style={{ objectPosition: "center 5%" }}
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent">
-                  <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block mb-1">02 / Executive Headshot</span>
-                  <span className="font-bold text-[14px] uppercase text-[#F8F9FA] block" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-                    Engr. Lester Jun Magboo (LupinXBT)
-                  </span>
-                </div>
-              </div>
-            </div>
+            <p className="font-mono text-[13px] text-[#708090] leading-relaxed mb-12 max-w-[64ch]">
+              Seminars, keynotes, pitch competitions, and community events across emerging technology, startups, AI, and security.
+            </p>
           </ScrollReveal>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0">
+            {talksAndEngagements.map(({ image, tag, title }, i) => (
+              <ScrollReveal key={tag} delay={i * 0.05}>
+                <div
+                  className="border-[3px] border-[#0A192F] bg-[#112240] h-full flex flex-col brut-card overflow-hidden cursor-pointer group"
+                  style={{ marginRight: "-3px", marginBottom: "-3px" }}
+                  onClick={() => setLightbox(image)}
+                >
+                  <div className="relative h-[220px] overflow-hidden bg-[#0A192F]">
+                    <img
+                      src={image}
+                      alt={title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 block"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#0A192F]/90 border border-[#1a3158] px-2.5 py-1">
+                      <span className="font-mono text-[9px] tracking-[0.16em] uppercase text-[#F8F9FA]">
+                        {tag}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <p className="font-mono text-[12px] text-[#C0C0C0] leading-relaxed m-0 group-hover:text-[#F8F9FA] transition-colors">
+                      {title}
+                    </p>
+                    <span className="font-mono text-[10px] tracking-wider text-[#708090] uppercase mt-4 block">
+                      Click to expand ↗
+                    </span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
+
 
       {/* ── BOOK INFO + FORM ──────────────────────────── */}
       <section className="py-24" id="book">
@@ -427,7 +548,7 @@ export default function Contact() {
                 
                 <dl className="border-t-[3px] border-[#112240] pt-4">
                   {[
-                    { dt: "Messages", dd: "Through the form — replies come from 3pstrategy@gmail.com, so it is worth allowing that address." },
+                    { dt: "Messages", dd: "Through the form — replies come from lupinxbt@gmail.com, so it is worth allowing that address." },
                     { dt: "Based In", dd: "Bacolod, Philippines · APAC and EMEA hours" },
                     { dt: "Turnaround", dd: "1–2 weeks from kickoff" },
                     { dt: "Confidentiality", dd: "NDA on request before anything substantive is exchanged" },
@@ -455,7 +576,7 @@ export default function Contact() {
                   Send us a message
                 </h3>
                 <p className="font-mono text-[13px] text-[#C0C0C0] mb-8 leading-relaxed">
-                  Tell me what you are trying to find out. Replies come from 3pstrategy@gmail.com, usually within one working day.
+                  Tell me what you are trying to find out. Replies come from lupinxbt@gmail.com, usually within one working day.
                 </p>
 
                 <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
@@ -537,6 +658,30 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* ── FAQ SECTION ───────────────────────────────── */}
+      <section className="py-24 border-b-[3px] border-[#0A192F] bg-[#0A192F]" id="faq">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <ScrollReveal>
+            <MonoLabel color="#C0C0C0">Common Questions</MonoLabel>
+            <h2
+              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] uppercase leading-tight tracking-tight mt-2 mb-4 text-[#F8F9FA]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              Frequently Asked Questions.
+            </h2>
+            <p className="font-mono text-[13px] text-[#708090] leading-relaxed mb-12 max-w-[60ch]">
+              Clear answers on confidentiality, scope, timeline, and how the audit fits around your schedule.
+            </p>
+          </ScrollReveal>
+
+          <div className="max-w-[900px] border-[3px] border-[#0A192F]">
+            {faqs.map(({ q, a, accent }, i) => (
+              <ContactFAQItem key={q} q={q} a={a} accent={accent} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Lightbox Modal for Full Image Maximization */}
       {lightbox && (
         <div
@@ -566,41 +711,46 @@ export default function Contact() {
           </div>
         </div>
       )}
-      {/* ── NEXT STEP ─────────────────────────────────── */}
-      <section className="py-24 bg-[#0A192F] border-t-[3px] border-[#112240]">
+      {/* ── CTA ────────────────────────────────────────── */}
+      <section className="py-24">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#708090]">Next Step</span>
-            <h2
-              className="font-bold text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-tight text-[#F8F9FA] mt-3 mb-5 max-w-[22ch]"
-              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            <div
+              className="border-[3px] border-[#0A192F] bg-[#112240] p-12 brut-card"
+              style={{ boxShadow: "10px 10px 0 0 #0A192F" }}
             >
-              Ready to see the scope against your project?
-            </h2>
-            <p className="font-mono text-[#C0C0C0] text-[0.95rem] max-w-[55ch] leading-relaxed mb-10">
-              A 30-minute call is enough to size the audit, confirm what is in scope, and tell you whether it is worth doing at all.
-            </p>
-            <div className="flex flex-wrap gap-4 items-center">
-              <a
-                href="https://calendly.com/lupinxbt-fw3/30min?month"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                  bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
-                style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
-              >
-                Book a 30-Minute Call <ArrowRight className="w-4 h-4" />
-              </a>
-              <Link
-                href="/process"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                  bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] transition-colors"
+              <MonoLabel color="#C0C0C0">Next step</MonoLabel>
+              <h2
+                className="font-bold text-[clamp(1.75rem,3vw,3rem)] leading-tight tracking-tight mt-2 mb-4 text-[#F8F9FA]"
                 style={{ fontFamily: "var(--font-sora), sans-serif" }}
               >
-                See the Process →
-              </Link>
+                Ready to see the scope against your project?
+              </h2>
+              <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8 max-w-[60ch]">
+                A 30-minute call is enough to size the audit, confirm what is in scope, and tell you whether it is worth doing at all.
+              </p>
+              <div className="flex flex-wrap gap-0 items-start">
+                <a
+                  href="https://calendly.com/lupinxbt-fw3/30min?month"
+                  className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                    bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
+                  style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  Book a 30-minute call <ArrowRight className="w-4 h-4" />
+                </a>
+                <Link
+                  href="/product"
+                  className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                    bg-transparent text-[#F8F9FA] border-[3px] border-[#112240] hover:border-[#F8F9FA] transition-colors"
+                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  See the product →
+                </Link>
+              </div>
+              <p className="font-mono text-[10px] text-[#708090] mt-6 tracking-widest uppercase m-0">
+                Confidential · NDA on request · Typical turnaround 1–2 weeks
+              </p>
             </div>
-            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#708090] mt-8">
-              Confidential · NDA on Request · Typical Turnaround 1–2 Weeks
-            </p>
           </ScrollReveal>
         </div>
       </section>

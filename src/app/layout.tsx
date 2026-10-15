@@ -25,6 +25,7 @@ export const metadata: Metadata = {
 };
 
 import Preloader from "@/components/layout/Preloader";
+import CustomCursor from "@/components/layout/CustomCursor";
 
 export default function RootLayout({
   children,
@@ -34,9 +35,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${plexMono.variable} h-full scroll-smooth scroll-pt-[88px]`}
+      className={`${sora.variable} ${plexMono.variable} h-full scroll-pt-[88px]`}
     >
       <body className="min-h-full flex flex-col font-sans bg-[#0A192F] text-[#F8F9FA]">
+        <CustomCursor />
         <Preloader />
         <Header />
         <main id="main" className="flex-1">

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, TextReveal } from "@/components/animations/ScrollReveal";
@@ -17,21 +18,10 @@ function MonoLabel({ children, color = "#C0C0C0" }: { children: React.ReactNode;
 const audiences = [
   {
     num: "01",
-    title: "Investors & VCs",
-    tag: "Pre-Investment",
-    accent: "#C0C0C0",
-    problems: [
-      "Technical claims in the pitch deck are unverified",
-      "Team backgrounds rely on self-reported information",
-      "Governance and token vesting terms are complex to parse",
-    ],
-    outcome: "A structured report with severity-graded findings that lets the investment committee make a more informed decision — or price risk correctly if they proceed.",
-  },
-  {
-    num: "02",
     title: "Founders & Operators",
     tag: "Investment Ready",
-    accent: "#708090",
+    accent: "#C0C0C0",
+    anchor: "founders",
     problems: [
       "Investor due diligence is exposing weaknesses that slow the process",
       "The team knows there are technical issues but hasn't prioritised them",
@@ -41,10 +31,24 @@ const audiences = [
     outcome: "A clear view of where your project actually stands, and a remediation roadmap that lets you fix issues before they surface in someone else's report.",
   },
   {
+    num: "02",
+    title: "Investors & VCs",
+    tag: "Pre-Investment",
+    accent: "#708090",
+    anchor: "investors",
+    problems: [
+      "Technical claims in the pitch deck are unverified",
+      "Team backgrounds rely on self-reported information",
+      "Strengths and risk",
+    ],
+    outcome: "A structured report with severity-graded findings that lets the investment committee make a more informed decision — or price risk correctly if they proceed.",
+  },
+  {
     num: "03",
     title: "Grant & Incubator Programs",
     tag: "Milestone Compliance",
     accent: "#C0C0C0",
+    anchor: "programmes",
     problems: [
       "Funded projects need structured progress assessment against milestones",
       "Program managers lack the technical depth to evaluate deliverables",
@@ -62,6 +66,28 @@ const notForYou = [
 ];
 
 export default function People() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const scrollToHash = () => {
+        const hash = window.location.hash.replace("#", "");
+        if (hash) {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      };
+
+      // Handle on initial load and after short delay for layout
+      const timer = setTimeout(scrollToHash, 150);
+      window.addEventListener("hashchange", scrollToHash);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("hashchange", scrollToHash);
+      };
+    }
+  }, []);
+
   return (
     <>
       {/* ── HERO ──────────────────────────────────────── */}
@@ -115,10 +141,11 @@ export default function People() {
           </ScrollReveal>
 
           <StaggerContainer className="flex flex-col gap-0" stagger={0.15}>
-            {audiences.map(({ num, title, tag, accent, problems, outcome }) => (
+            {audiences.map(({ num, title, tag, accent, anchor, problems, outcome }) => (
               <StaggerItem key={num}>
                 <div
-                  className="grid md:grid-cols-[320px_1fr] border-[3px] border-[#0A192F] bg-[#112240] brut-card"
+                  id={anchor}
+                  className="grid md:grid-cols-[320px_1fr] border-[3px] border-[#0A192F] bg-[#112240] brut-card scroll-mt-[100px]"
                   style={{ boxShadow: `8px 8px 0 0 ${accent}`, marginBottom: "-3px" }}
                 >
                   {/* Left panel */}
@@ -193,20 +220,9 @@ export default function People() {
                 </p>
               </div>
               
-              <div className="border-[3px] border-[#0A192F] bg-[#0A192F] h-full flex flex-col justify-between overflow-hidden" style={{ marginLeft: "-3px" }}>
-                <div className="relative w-full h-[220px] border-b-[3px] border-[#0A192F]">
-                  <img
-                    src="/lupin/lupin_3.jpg"
-                    alt="Engr. Lester Jun Magboo (LupinXBT)"
-                    className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500 block"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-[#0A192F] to-transparent">
-                    <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#C0C0C0] block">3P Strategist · LupinXBT</span>
-                  </div>
-                </div>
-                <div className="p-10 flex-1 flex flex-col justify-between">
-                  <div>
-                    <MonoLabel color="#C0C0C0">Questions?</MonoLabel>
+              <div className="border-[3px] border-[#0A192F] bg-[#0A192F] p-10 h-full flex flex-col justify-between" style={{ marginLeft: "-3px" }}>
+                <div>
+                  <MonoLabel color="#C0C0C0">Questions?</MonoLabel>
                     <h2
                       className="font-bold text-[1.75rem] uppercase leading-tight tracking-tight mt-3 mb-6 text-[#F8F9FA]"
                       style={{ fontFamily: "var(--font-sora), sans-serif" }}
@@ -227,86 +243,50 @@ export default function People() {
                   </a>
                 </div>
               </div>
-            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ── NEXT ──────────────────────────────────────── */}
+      {/* ── CTA ────────────────────────────────────────── */}
       <section className="py-24">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
             <div
-              className="border-[3px] border-[#0A192F] bg-[#112240] p-12 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between brut-card"
+              className="border-[3px] border-[#0A192F] bg-[#112240] p-12 brut-card"
               style={{ boxShadow: "10px 10px 0 0 #0A192F" }}
             >
-              <div>
-                <MonoLabel color="#C0C0C0">Next Step</MonoLabel>
-                <h2
-                  className="font-bold text-[clamp(1.5rem,3vw,2.5rem)] uppercase leading-tight tracking-tight mt-2 text-[#F8F9FA]"
-                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  Seen enough?
-                </h2>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-0 shrink-0">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+              <MonoLabel color="#C0C0C0">Next step</MonoLabel>
+              <h2
+                className="font-bold text-[clamp(1.75rem,3vw,3rem)] leading-tight tracking-tight mt-2 mb-4 text-[#F8F9FA]"
+                style={{ fontFamily: "var(--font-sora), sans-serif" }}
+              >
+                Ready to see the scope against your project?
+              </h2>
+              <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8 max-w-[60ch]">
+                A 30-minute call is enough to size the audit, confirm what is in scope, and tell you whether it is worth doing at all.
+              </p>
+              <div className="flex flex-wrap gap-0 items-start">
+                <a
+                  href="https://calendly.com/lupinxbt-fw3/30min?month"
+                  className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
                     bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
                   style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Contact & Start <ArrowRight className="w-4 h-4" />
-                </Link>
+                  Book a 30-minute call <ArrowRight className="w-4 h-4" />
+                </a>
                 <Link
-                  href="/process"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                    bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] transition-colors"
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
+                    bg-transparent text-[#F8F9FA] border-[3px] border-[#112240] hover:border-[#F8F9FA] transition-colors"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  ← See the Process
+                  Get in touch →
                 </Link>
               </div>
+              <p className="font-mono text-[10px] text-[#708090] mt-6 tracking-widest uppercase m-0">
+                Confidential · NDA on request · Typical turnaround 1–2 weeks
+              </p>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── NEXT STEP ─────────────────────────────────── */}
-      <section className="py-24 bg-[#0A192F] border-t-[3px] border-[#112240]">
-        <div className="w-full max-w-[1280px] mx-auto px-5">
-          <ScrollReveal>
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#708090]">Next Step</span>
-            <h2
-              className="font-bold text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-tight text-[#F8F9FA] mt-3 mb-5 max-w-[22ch]"
-              style={{ fontFamily: "var(--font-sora), sans-serif" }}
-            >
-              Ready to see the scope against your project?
-            </h2>
-            <p className="font-mono text-[#C0C0C0] text-[0.95rem] max-w-[55ch] leading-relaxed mb-10">
-              A 30-minute call is enough to size the audit, confirm what is in scope, and tell you whether it is worth doing at all.
-            </p>
-            <div className="flex flex-wrap gap-4 items-center">
-              <a
-                href="https://calendly.com/lupinxbt-fw3/30min?month"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                  bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
-                style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
-              >
-                Book a 30-Minute Call <ArrowRight className="w-4 h-4" />
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                  bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] transition-colors"
-                style={{ fontFamily: "var(--font-sora), sans-serif" }}
-              >
-                Send Us a Message →
-              </Link>
-            </div>
-            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-[#708090] mt-8">
-              Confidential · NDA on Request · Typical Turnaround 1–2 Weeks
-            </p>
           </ScrollReveal>
         </div>
       </section>

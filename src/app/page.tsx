@@ -178,7 +178,7 @@ export default function Home() {
             <p className="text-[#8892A4] font-mono text-[10px] tracking-[0.2em] uppercase mb-4">Choose the one that describes you</p>
             <div className="grid md:grid-cols-3 gap-3">
                {/* Card 1 */}
-               <Link href="/people" className="block border border-[#1E2D45] hover:border-[#0275D8] rounded-[8px] p-6 bg-[#0D2137]/60 hover:bg-[#0D2137] backdrop-blur-sm transition-all duration-200 cursor-pointer group relative overflow-hidden">
+               <Link href="/people#founders" className="block border border-[#1E2D45] hover:border-[#0275D8] rounded-[8px] p-6 bg-[#0D2137]/60 hover:bg-[#0D2137] backdrop-blur-sm transition-all duration-200 cursor-pointer group relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-[#0275D8]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#0275D8]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                  <h4 className="font-bold text-[#F8F9FA] text-[15px] mb-2 tracking-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>I run or am building a business</h4>
@@ -186,7 +186,7 @@ export default function Home() {
                </Link>
                
                {/* Card 2 */}
-               <Link href="/people" className="block border border-[#1E2D45] hover:border-[#0275D8] rounded-[8px] p-6 bg-[#0D2137]/60 hover:bg-[#0D2137] backdrop-blur-sm transition-all duration-200 cursor-pointer group relative overflow-hidden">
+               <Link href="/people#investors" className="block border border-[#1E2D45] hover:border-[#0275D8] rounded-[8px] p-6 bg-[#0D2137]/60 hover:bg-[#0D2137] backdrop-blur-sm transition-all duration-200 cursor-pointer group relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-[#0275D8]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#0275D8]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                  <h4 className="font-bold text-[#F8F9FA] text-[15px] mb-2 tracking-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>I invest in or lend to businesses</h4>
@@ -194,7 +194,7 @@ export default function Home() {
                </Link>
 
                {/* Card 3 */}
-               <Link href="/people" className="block border border-[#1E2D45] hover:border-[#0275D8] rounded-[8px] p-6 bg-[#0D2137]/60 hover:bg-[#0D2137] backdrop-blur-sm transition-all duration-200 cursor-pointer group relative overflow-hidden">
+               <Link href="/people#programmes" className="block border border-[#1E2D45] hover:border-[#0275D8] rounded-[8px] p-6 bg-[#0D2137]/60 hover:bg-[#0D2137] backdrop-blur-sm transition-all duration-200 cursor-pointer group relative overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-[#0275D8]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#0275D8]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                  <h4 className="font-bold text-[#F8F9FA] text-[15px] mb-2 tracking-tight" style={{ fontFamily: "var(--font-sora), sans-serif" }}>I run a programme</h4>
@@ -319,99 +319,433 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY IT MATTERS ──────────────────────────────── */}
-      <section className="py-24 border-b-[3px] border-[#0A192F] bg-[#112240]">
-        <div className="w-full max-w-[1280px] mx-auto px-5">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            {/* Left */}
-            <ScrollReveal>
-              <MonoLabel color="#C0C0C0">Why it matters</MonoLabel>
-              <h2
-                className="font-bold text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] tracking-tight mt-2 mb-6 text-[#F8F9FA]"
-                style={{ fontFamily: "var(--font-sora), sans-serif" }}
-              >
-                Founders rarely see it until it has cost them a deal.
-              </h2>
-              <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-4">
-                Investors and grant committees see the same pattern constantly: strong narrative, weak operating
-                system underneath. By the time it surfaces in diligence, the leverage has moved to the other side
-                of the table — and the terms move with it.
-              </p>
-              <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-6">
-                An audit before the raise costs a fraction of what one repriced round costs, and turns a defensive
-                conversation into a prepared one.
-              </p>
-              <Link href="/process" className="font-mono text-[12px] tracking-widest uppercase text-[#F8F9FA] hover:text-[#C0C0C0] transition-colors">
-                See how the audit runs →
-              </Link>
-            </ScrollReveal>
+      {/* ── BEFORE / AFTER ──────────────────────────────── */}
+      <section className="relative py-28 border-b-[3px] border-[#0A192F] bg-[#0A192F] overflow-hidden">
 
-            {/* Right — deliverables card */}
-            <ScrollReveal>
+        {/* Background grid pattern */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.035]"
+          style={{
+            backgroundImage: "linear-gradient(#F8F9FA 1px, transparent 1px), linear-gradient(90deg, #F8F9FA 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+
+        {/* Ambient glow blob — right side */}
+        <div
+          className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(192,192,192,0.07) 0%, transparent 70%)",
+          }}
+        />
+
+        <div className="relative w-full max-w-[1280px] mx-auto px-5">
+
+          {/* Header */}
+          <ScrollReveal>
+            <MonoLabel color="#C0C0C0">Typical outcome</MonoLabel>
+            <h2
+              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] leading-tight tracking-tight mt-2 mb-3 text-[#F8F9FA]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              Scores before and after a Fix Sprint.
+            </h2>
+            <p className="font-mono text-[13px] text-[#708090] leading-relaxed mb-16 max-w-[56ch]">
+              Illustrative. Based on a business that completed an Assessment and a Fix Sprint.
+            </p>
+          </ScrollReveal>
+
+          {/* Cards */}
+          <div className="grid md:grid-cols-2 gap-0">
+
+            {/* ── BEFORE ─────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            >
               <div
-                className="border-[3px] border-[#0A192F] bg-[#0A192F] p-8 brut-card"
-                style={{ boxShadow: "8px 8px 0 0 #0A192F" }}
+                className="relative p-8 md:p-12 border-[3px] border-[#1a3158] bg-[#0d1b2e] h-full"
+                style={{ marginRight: "-3px" }}
               >
-                <h3 className="font-bold text-[1.1rem] uppercase tracking-tight text-[#F8F9FA] mb-6"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-                  What you walk away with
-                </h3>
-                <ul className="space-y-4 m-0 p-0 list-none">
-                  {[
-                    "A boardroom-ready report with an investment-readiness score",
-                    "A full risk register scored by severity",
-                    "A 30/60/90-day execution roadmap",
-                    "A live walkthrough with your team, investor or committee",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span className="text-[#C0C0C0] mt-0.5 shrink-0 font-mono text-[16px] leading-none">✓</span>
-                      <span className="font-mono text-[13px] text-[#C0C0C0] leading-snug">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/product"
-                  className="inline-flex items-center gap-2 mt-8 px-5 py-3 font-bold text-[12px] tracking-[0.1em] uppercase
-                    bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press w-full justify-center"
-                  style={{ boxShadow: "4px 4px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  See the full scope →
-                </Link>
+                {/* Dim overlay texture */}
+                <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+                  style={{ backgroundImage: "repeating-linear-gradient(45deg, #F8F9FA 0, #F8F9FA 1px, transparent 0, transparent 50%)", backgroundSize: "6px 6px" }}
+                />
+
+                <div className="relative">
+                  {/* Label */}
+                  <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 border-[2px] border-[#1a3158]">
+                    <span className="w-2 h-2 rounded-full bg-[#708090]" />
+                    <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#708090] font-bold">Before assessment</span>
+                  </div>
+
+                  {/* Main score */}
+                  <div className="flex items-end gap-4 mb-8 pb-8 border-b-[2px] border-[#1a3158]">
+                    <div>
+                      <span className="font-mono text-[11px] tracking-widest uppercase text-[#708090] block mb-1">3P Index</span>
+                      <div className="flex items-baseline gap-3">
+                        <span
+                          className="font-bold text-[5rem] leading-none text-[#708090]"
+                          style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                        >
+                          5.3
+                        </span>
+                        <span className="font-mono text-[13px] text-[#708090] mb-2">/ 10</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Pillar bars */}
+                  <div className="space-y-6">
+                    {[
+                      { label: "Product", score: 4.2, color: "#708090" },
+                      { label: "Process", score: 5.5, color: "#708090" },
+                      { label: "People",  score: 6.2, color: "#708090" },
+                    ].map(({ label, score, color }, i) => (
+                      <motion.div
+                        key={label}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 + i * 0.12 }}
+                      >
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-mono text-[11px] text-[#708090] uppercase tracking-widest">{label}</span>
+                          <span className="font-mono text-[13px] font-bold" style={{ color }}>{score}</span>
+                        </div>
+                        <div className="relative h-[8px] bg-[#0A192F] border-[1px] border-[#1a3158] w-full overflow-hidden">
+                          <motion.div
+                            className="h-full"
+                            style={{ backgroundColor: color }}
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${(score / 10) * 100}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.4 + i * 0.15, ease: "easeOut" }}
+                          />
+                        </div>
+                        <div className="flex justify-between mt-1">
+                          <span className="font-mono text-[9px] text-[#1a3158]">0</span>
+                          <span className="font-mono text-[9px] text-[#1a3158]">10</span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </ScrollReveal>
+            </motion.div>
+
+            {/* ── AFTER ──────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <div
+                className="relative p-8 md:p-12 border-[3px] border-[#C0C0C0] bg-[#112240] h-full overflow-hidden"
+                style={{ boxShadow: "10px 10px 0 0 #C0C0C0" }}
+              >
+                {/* Glow bloom top-right */}
+                <div
+                  className="absolute -top-16 -right-16 w-[280px] h-[280px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(192,192,192,0.15) 0%, transparent 65%)" }}
+                />
+                {/* Glow bloom bottom-left */}
+                <div
+                  className="absolute -bottom-12 -left-12 w-[200px] h-[200px] rounded-full pointer-events-none"
+                  style={{ background: "radial-gradient(circle, rgba(192,192,192,0.08) 0%, transparent 65%)" }}
+                />
+
+                <div className="relative">
+                  {/* Label */}
+                  <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 border-[2px] border-[#C0C0C0]">
+                    <motion.span
+                      className="w-2 h-2 rounded-full bg-[#F8F9FA]"
+                      animate={{ opacity: [1, 0.3, 1] }}
+                      transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#F8F9FA] font-bold">After fix sprint</span>
+                  </div>
+
+                  {/* Main score + delta badge */}
+                  <div className="flex items-end gap-4 mb-8 pb-8 border-b-[2px] border-[#1a3158]">
+                    <div className="flex-1">
+                      <span className="font-mono text-[11px] tracking-widest uppercase text-[#C0C0C0] block mb-1">3P Index</span>
+                      <div className="flex items-baseline gap-3">
+                        <span
+                          className="font-bold text-[5rem] leading-none text-[#F8F9FA]"
+                          style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                        >
+                          7.2
+                        </span>
+                        <span className="font-mono text-[13px] text-[#708090] mb-2">/ 10</span>
+                      </div>
+                    </div>
+                    {/* Delta badge */}
+                    <motion.div
+                      initial={{ scale: 0, rotate: -12 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.5 }}
+                      className="shrink-0 mb-2"
+                    >
+                      <div
+                        className="px-4 py-2 border-[3px] border-[#F8F9FA] bg-[#0A192F] text-center"
+                        style={{ boxShadow: "4px 4px 0 0 #C0C0C0" }}
+                      >
+                        <span
+                          className="font-bold text-[1.4rem] leading-none text-[#F8F9FA] block"
+                          style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                        >
+                          +1.9
+                        </span>
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-[#C0C0C0]">uplift</span>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Pillar bars */}
+                  <div className="space-y-6">
+                    {[
+                      { label: "Product", score: 6.5, prev: 4.2, color: "#F8F9FA" },
+                      { label: "Process", score: 7.7, prev: 5.5, color: "#F8F9FA" },
+                      { label: "People",  score: 7.4, prev: 6.2, color: "#F8F9FA" },
+                    ].map(({ label, score, prev, color }, i) => {
+                      const delta = (score - prev).toFixed(1);
+                      return (
+                        <motion.div
+                          key={label}
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.4 + i * 0.12 }}
+                        >
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="font-mono text-[11px] text-[#C0C0C0] uppercase tracking-widest">{label}</span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono text-[10px] text-[#708090] px-1.5 py-0.5 border border-[#1a3158]">+{delta}</span>
+                              <span className="font-mono text-[13px] font-bold text-[#F8F9FA]">{score}</span>
+                            </div>
+                          </div>
+                          {/* Track */}
+                          <div className="relative h-[8px] bg-[#0A192F] border-[1px] border-[#1a3158] w-full overflow-hidden">
+                            {/* Previous score ghost bar */}
+                            <div
+                              className="absolute left-0 top-0 h-full bg-[#1a3158]"
+                              style={{ width: `${(prev / 10) * 100}%` }}
+                            />
+                            {/* New score bar animates in */}
+                            <motion.div
+                              className="absolute left-0 top-0 h-full"
+                              style={{ backgroundColor: color }}
+                              initial={{ width: `${(prev / 10) * 100}%` }}
+                              whileInView={{ width: `${(score / 10) * 100}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.1, delay: 0.5 + i * 0.15, ease: "easeOut" }}
+                            />
+                            {/* Glow tip */}
+                            <motion.div
+                              className="absolute top-0 h-full w-[6px]"
+                              style={{
+                                background: "linear-gradient(90deg, transparent, rgba(248,249,250,0.8))",
+                                boxShadow: "0 0 8px rgba(248,249,250,0.6)",
+                              }}
+                              initial={{ left: `calc(${(prev / 10) * 100}% - 6px)` }}
+                              whileInView={{ left: `calc(${(score / 10) * 100}% - 6px)` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.1, delay: 0.5 + i * 0.15, ease: "easeOut" }}
+                            />
+                          </div>
+                          <div className="flex justify-between mt-1">
+                            <span className="font-mono text-[9px] text-[#1a3158]">0</span>
+                            <span className="font-mono text-[9px] text-[#1a3158]">10</span>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
+
+          {/* Bottom note */}
+          <ScrollReveal delay={0.4}>
+            <p className="font-mono text-[10px] text-[#1a3158] uppercase tracking-widest text-center mt-8">
+              Scores are illustrative · Individual results vary based on starting state and sprint scope
+            </p>
+          </ScrollReveal>
+
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────────────── */}
+      {/* ── WHO IS THIS FOR ─────────────────────────────── */}
+      <section className="py-24 border-b-[3px] border-[#0A192F] bg-[#112240]">
+        <div className="w-full max-w-[1280px] mx-auto px-5">
+          <ScrollReveal>
+            <MonoLabel color="#C0C0C0">Who it&apos;s for</MonoLabel>
+            <h2
+              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] leading-tight tracking-tight mt-2 mb-12 text-[#F8F9FA]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
+            >
+              Find your starting point.
+            </h2>
+          </ScrollReveal>
+
+          <StaggerContainer className="grid md:grid-cols-3 gap-0" stagger={0.1}>
+            {[
+              {
+                num: "01",
+                title: "I run or am building a business",
+                desc: "Startup founders and MSME owners preparing to raise, borrow or apply",
+                href: "/people#founders",
+                accent: "#F8F9FA",
+              },
+              {
+                num: "02",
+                title: "I invest in or lend to businesses",
+                desc: "VCs, angels, lenders and corporate partners",
+                href: "/people#investors",
+                accent: "#C0C0C0",
+              },
+              {
+                num: "03",
+                title: "I run a programme",
+                desc: "Grants, incubators, accelerators and MSME development programmes",
+                href: "/people#programmes",
+                accent: "#708090",
+              },
+            ].map(({ num, title, desc, href, accent }) => (
+              <StaggerItem key={num}>
+                <Link
+                  href={href}
+                  className="block p-8 border-[3px] border-[#0A192F] bg-[#0A192F] h-full brut-card hover:bg-[#1a3158] transition-colors group"
+                  style={{ marginRight: "-3px", marginBottom: "-3px" }}
+                >
+                  <span
+                    className="font-bold text-[3rem] leading-none block mb-4"
+                    style={{ fontFamily: "var(--font-sora), sans-serif", color: accent }}
+                  >
+                    {num}
+                  </span>
+                  <h3
+                    className="font-bold text-[1.1rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
+                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    {title}
+                  </h3>
+                  <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-6">{desc}</p>
+                  <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#F8F9FA] group-hover:tracking-[0.2em] transition-all">
+                    Learn more →
+                  </span>
+                </Link>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ── WAYS TO GET STARTED ─────────────────────────── */}
       <section className="py-24">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
-            <div
-              className="border-[3px] border-[#0A192F] bg-[#112240] p-12 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between brut-card"
-              style={{ boxShadow: "10px 10px 0 0 #0A192F" }}
+            <MonoLabel color="#C0C0C0">Next step</MonoLabel>
+            <h2
+              className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] leading-tight tracking-tight mt-2 mb-12 text-[#F8F9FA]"
+              style={{ fontFamily: "var(--font-sora), sans-serif" }}
             >
-              <div>
-                <MonoLabel color="#C0C0C0">Get Started</MonoLabel>
-                <h2
-                  className="font-bold text-[clamp(1.75rem,3vw,3rem)] leading-tight tracking-tight mt-2 text-[#F8F9FA]"
-                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  Ready to become<br />investment-ready?
-                </h2>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-0 shrink-0">
+              Ways to get started.
+            </h2>
+          </ScrollReveal>
+
+          <StaggerContainer className="grid md:grid-cols-3 gap-0" stagger={0.1}>
+            {/* Ready to scope it */}
+            <StaggerItem>
+              <div
+                className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
+                style={{ marginRight: "-3px", boxShadow: "8px 8px 0 0 #C0C0C0" }}
+              >
+                <div>
+                  <h3
+                    className="font-bold text-[1.25rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
+                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    Ready to scope it
+                  </h3>
+                  <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8">
+                    A 30-minute call to agree scope, timing and price.
+                  </p>
+                </div>
                 <a
-                  href="https://calendly.com/lupinxbt-fw3/30min?month"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
-                    bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press"
-                  style={{ boxShadow: "6px 6px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+                  href="https://calendly.com/lupinxbt-fw3/30min"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase
+                    bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press w-full"
+                  style={{ boxShadow: "4px 4px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Book a 30-minute call →
+                  Book a 30-minute call <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-            </div>
-          </ScrollReveal>
+            </StaggerItem>
+
+            {/* Still evaluating */}
+            <StaggerItem>
+              <div
+                className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
+                style={{ marginRight: "-3px" }}
+              >
+                <div>
+                  <h3
+                    className="font-bold text-[1.25rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
+                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    Still evaluating
+                  </h3>
+                  <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8">
+                    See a redacted sample report before you commit.
+                  </p>
+                </div>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase
+                    bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] hover:bg-[#1a3158] transition-colors w-full"
+                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  Get a sample report →
+                </Link>
+              </div>
+            </StaggerItem>
+
+            {/* Have a question first */}
+            <StaggerItem>
+              <div
+                className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
+                style={{ marginRight: "-3px" }}
+              >
+                <div>
+                  <h3
+                    className="font-bold text-[1.25rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
+                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                  >
+                    Have a question first
+                  </h3>
+                  <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8">
+                    Describe your business in a few lines and get a reply by email.
+                  </p>
+                </div>
+                <Link
+                  href="/contact#message"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase
+                    bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] hover:bg-[#1a3158] transition-colors w-full"
+                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                >
+                  Send a brief →
+                </Link>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
     </>

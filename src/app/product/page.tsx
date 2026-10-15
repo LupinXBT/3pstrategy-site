@@ -20,23 +20,46 @@ function MonoLabel({ children, color = "#C0C0C0" }: { children: React.ReactNode;
 const deliverables = [
   {
     num: "01",
-    label: "The 3Ps Audit Report",
-    desc: "Boardroom-ready, with an executive summary and an investment-readiness score. Written to be forwarded to an investor or committee without editing.",
+    label: "Score and verdict",
+    desc: "A 3P Index out of 10, a score for each pillar, and one of four verdicts: Engage, Engage with conditions, Monitor or Pass.",
   },
   {
     num: "02",
-    label: "Full Risk Register",
-    desc: "Every finding scored by severity, with the likely impact, an owner and an effort estimate against it — so the list can be worked, not just read.",
+    label: "Ranked risks",
+    desc: "The issues most likely to hurt the business or a funding decision, ordered by severity, each with the evidence behind it.",
   },
   {
     num: "03",
-    label: "30/60/90-Day Roadmap",
-    desc: "What to fix first and why that order — sequenced by what a diligence process will look at soonest, not by what is easiest.",
+    label: "2-3months plan",
+    desc: "What to fix first, second and third, with the score each fix is expected to move.",
   },
   {
     num: "04",
-    label: "A Live Walkthrough",
-    desc: "One review call to take your team, investor or committee through the findings and answer the questions the document raises.",
+    label: "Live walkthrough",
+    desc: "A session with you, your investor or your committee to go through the findings and answer questions.",
+  },
+];
+
+const isoStandards = [
+  {
+    code: "ISO 9001",
+    name: "Quality Management",
+    desc: "The process approach, documented information and continual improvement that Product and Process are scored against.",
+  },
+  {
+    code: "ISO/IEC 27001",
+    name: "Information Security",
+    desc: "Access control, asset management and incident response, inside the Process dimension.",
+  },
+  {
+    code: "ISO 31000",
+    name: "Risk Management",
+    desc: "The structure and severity scoring of the risk register you receive.",
+  },
+  {
+    code: "ISO 21502",
+    name: "Project & Program Management",
+    desc: "Governance, roles and delivery control, across Process and People.",
   },
 ];
 
@@ -82,31 +105,36 @@ const scopeDimensions = [
   },
 ];
 
-const engagements = [
+const waysToWork = [
   {
-    title: "Focused Audit",
-    desc: "One dimension, single product line. For a specific worry you already have.",
-    timeline: "~1 week · scoped on the intro call",
+    id: "01",
+    title: "Assessment",
+    desc: "A full 3Ps review of one business, with report and walkthrough.",
+    bestFor: "Owners preparing to raise or borrow; investors or lenders reviewing one business",
+    length: "1–2 weeks",
+    cta: "Book an assessment",
+    href: "https://calendly.com/lupinxbt-fw3/30min",
+    primary: true,
   },
   {
-    title: "Full 3Ps Audit",
-    desc: "All three dimensions, report, risk register, roadmap and review call. The usual entry point.",
-    timeline: "1–2 weeks · scoped on the intro call",
+    id: "02",
+    title: "Fix sprint",
+    desc: "Hands-on work on the top items in the 2-3months then a re-score.",
+    bestFor: "Businesses that scored Developing or Gap on one pillar",
+    length: "2–3 months",
+    cta: "Ask about a sprint",
+    href: "/contact",
+    primary: false,
   },
   {
-    title: "Portfolio Screening",
-    desc: "Repeatable scoring across multiple projects, for funds and programs.",
-    timeline: "Quoted per portfolio",
-  },
-  {
-    title: "Implementation Sprint",
-    desc: "4–8 weeks working alongside your team to close the highest-severity findings, then hand back with the documentation in place.",
-    timeline: "Priced after the audit, against the actual roadmap",
-  },
-  {
-    title: "Fractional Support",
-    desc: "Ongoing operator support across strategy, delivery and governance on a monthly retainer — for teams that need the capability rather than the report.",
-    timeline: "",
+    id: "03",
+    title: "Fractional",
+    desc: "Ongoing re-scoring and advice for a portfolio, a loan book or a programme cohort.",
+    bestFor: "Investors, lenders and programmes tracking several businesses",
+    length: "Monthly or quarterly",
+    cta: "Discuss fractional support",
+    href: "/contact",
+    primary: false,
   },
 ];
 
@@ -187,12 +215,12 @@ export default function Product() {
               <MonoLabel>Product / 01</MonoLabel>
             </div>
             <h1
-              className="font-extralight text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.05] tracking-tight text-[#F8F9FA] mb-6 max-w-[22ch]"
+              className="font-extralight text-[clamp(2.5rem,5.5vw,5rem)] uppercase leading-[1.05] tracking-tight text-[#F8F9FA] mb-6 max-w-[22ch]"
               style={{ fontFamily: "var(--font-sora), sans-serif" }}
             >
-              <TextReveal text="Product —" />
+              <TextReveal text="PRODUCT —" />
               <br />
-              <TextReveal text="the first P." delay={0.3} />
+              <TextReveal text="THE FIRST P." delay={0.3} />
             </h1>
             <p className="font-mono text-[#C0C0C0] text-[1rem] max-w-[60ch] leading-relaxed mb-8">
               A fixed-scope operational and technical due-diligence review for tech projects before the funding.
@@ -324,18 +352,18 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ── ISO-ALIGNED NOTE ───────────────────────────── */}
-      <section className="py-20 border-b-[3px] border-[#0A192F] bg-[#112240]">
+      {/* ── ISO-ALIGNED FRAMEWORK ───────────────────────── */}
+      <section className="py-24 border-b-[3px] border-[#0A192F] bg-[#112240]">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
-            <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 items-start">
+            <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 items-start mb-12">
               <div>
                 <MonoLabel color="#C0C0C0">ISO-aligned framework</MonoLabel>
                 <h2
-                  className="font-bold text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.1] tracking-tight mt-2 text-[#F8F9FA]"
+                  className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] leading-tight tracking-tight mt-2 text-[#F8F9FA]"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Alignment, not certification.
+                  Scored against standards your investors already recognize.
                 </h2>
               </div>
               <div>
@@ -345,17 +373,50 @@ export default function Product() {
                   not have to translate.
                 </p>
                 <p className="font-mono text-[13px] text-[#708090] leading-relaxed m-0">
-                  This is alignment, not certification. The audit tells you where you would stand against these standards
+                  This is <strong className="text-[#F8F9FA]">alignment, not certification</strong>. The audit tells you where you would stand against these standards
                   and what it would take to close the gap. It does not confer a certificate — only an accredited
                   certification body can do that — and it is not an audit performed on their behalf.
                 </p>
+              </div>
+            </div>
+
+            <div className="border-t-[3px] border-[#0A192F] pt-10">
+              <h3
+                className="font-bold text-[1rem] uppercase tracking-wider text-[#C0C0C0] mb-6"
+                style={{ fontFamily: "var(--font-sora), sans-serif" }}
+              >
+                How the 3Ps map
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0">
+                {isoStandards.map(({ code, name, desc }) => (
+                  <div
+                    key={code}
+                    className="p-8 border-[3px] border-[#0A192F] bg-[#0A192F] brut-card flex flex-col justify-between"
+                    style={{ marginRight: "-3px", marginBottom: "-3px" }}
+                  >
+                    <div>
+                      <span className="font-mono text-[12px] font-bold text-[#F8F9FA] tracking-wider uppercase block mb-2">
+                        {code}
+                      </span>
+                      <h4
+                        className="font-bold text-[15px] uppercase text-[#C0C0C0] tracking-tight mb-3"
+                        style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                      >
+                        {name}
+                      </h4>
+                      <p className="font-mono text-[12px] text-[#708090] leading-relaxed m-0">
+                        {desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ── ENGAGEMENT MODELS ─────────────────────────── */}
+      {/* ── WAYS TO WORK TOGETHER ─────────────────────────── */}
       <section className="py-24 border-b-[3px] border-[#0A192F]">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
@@ -364,38 +425,71 @@ export default function Product() {
               className="font-bold text-[clamp(1.75rem,3.5vw,3rem)] leading-tight tracking-tight mt-2 mb-4 text-[#F8F9FA]"
               style={{ fontFamily: "var(--font-sora), sans-serif" }}
             >
-              How We Work Together.
+              Ways to work together
             </h2>
             <p className="font-mono text-[13px] text-[#708090] leading-relaxed mb-12 max-w-[64ch]">
-              Most clients start with an audit. Implementation support is optional and only worth buying where it earns its cost.
+              Most clients start with the assessment. The other two build on it.
             </p>
           </ScrollReveal>
 
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-0" stagger={0.08}>
-            {engagements.map(({ title, desc, timeline }, i) => (
+          <StaggerContainer className="grid md:grid-cols-3 gap-0" stagger={0.08}>
+            {waysToWork.map(({ id, title, desc, bestFor, length, cta, href, primary }) => (
               <StaggerItem key={title}>
                 <div
-                  className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card hover:bg-[#1a3158] transition-colors flex flex-col"
+                  className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
                   style={{ marginRight: "-3px", marginBottom: "-3px" }}
                 >
-                  <span
-                    className="font-bold text-[2rem] leading-none text-[#C0C0C0] block mb-3"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3
-                    className="font-bold text-[1.1rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                  >
-                    {title}
-                  </h3>
-                  <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed flex-1">{desc}</p>
-                  {timeline && (
-                    <p className="font-mono text-[10px] tracking-widest uppercase text-[#708090] mt-4 pt-4 border-t-[2px] border-[#1a3158] m-0">
-                      {timeline}
-                    </p>
-                  )}
+                  <div>
+                    <span
+                      className="font-bold text-[2rem] leading-none text-[#C0C0C0] block mb-3"
+                      style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                    >
+                      {id}
+                    </span>
+                    <h3
+                      className="font-bold text-[1.25rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
+                      style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                    >
+                      {title}
+                    </h3>
+                    <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-6">{desc}</p>
+
+                    <div className="pt-4 border-t-[2px] border-[#1a3158]">
+                      <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#708090] block mb-1 font-bold">
+                        Best for
+                      </span>
+                      <p className="font-mono text-[12px] text-[#F8F9FA] leading-relaxed m-0">{bestFor}</p>
+                    </div>
+
+                    {length && (
+                      <div className="mt-4 pt-3 border-t-[1px] border-[#1a3158]/60">
+                        <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#708090] block mb-1 font-bold">
+                          Length
+                        </span>
+                        <p className="font-mono text-[12px] text-[#C0C0C0] font-bold m-0">{length}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-8 pt-4">
+                    {primary ? (
+                      <a
+                        href={href}
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase bg-[#F8F9FA] text-[#0A192F] border-[3px] border-[#0A192F] brut-btn-press w-full"
+                        style={{ boxShadow: "4px 4px 0 0 #0A192F", fontFamily: "var(--font-sora), sans-serif" }}
+                      >
+                        {cta} <ArrowRight className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <Link
+                        href={href}
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] hover:bg-[#1a3158] transition-colors w-full"
+                        style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                      >
+                        {cta} →
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </StaggerItem>
             ))}
@@ -475,12 +569,12 @@ export default function Product() {
                   Book a 30-minute call <ArrowRight className="w-4 h-4" />
                 </a>
                 <Link
-                  href="/contact"
+                  href="/process"
                   className="inline-flex items-center gap-2 px-6 py-4 font-bold text-[13px] tracking-[0.1em] uppercase
                     bg-transparent text-[#F8F9FA] border-[3px] border-[#112240] hover:border-[#F8F9FA] transition-colors"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Send us a message →
+                  See the process →
                 </Link>
               </div>
               <p className="font-mono text-[10px] text-[#708090] mt-6 tracking-widest uppercase m-0">
