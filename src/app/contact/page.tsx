@@ -507,11 +507,6 @@ export default function Contact() {
                       alt={title}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 block"
                     />
-                    <div className="absolute top-3 left-3 bg-[#0A192F]/90 border border-[#1a3158] px-2.5 py-1">
-                      <span className="font-mono text-[9px] tracking-[0.16em] uppercase text-[#F8F9FA]">
-                        {tag}
-                      </span>
-                    </div>
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <p className="font-mono text-[12px] text-[#C0C0C0] leading-relaxed m-0 group-hover:text-[#F8F9FA] transition-colors">
