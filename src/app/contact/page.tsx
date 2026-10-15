@@ -7,7 +7,7 @@ import { AnimatedCounter } from "@/components/animations/AnimatedCounter";
 import { ParallaxText } from "@/components/animations/ParallaxText";
 import { TiltCard } from "@/components/animations/TiltCard";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function MonoLabel({ children, color = "#C0C0C0" }: { children: React.ReactNode; color?: string }) {
   return (
@@ -218,6 +218,27 @@ function ContactFAQItem({ q, a, accent, index }: { q: string; a: string; accent:
 
 export default function Contact() {
   const [lightbox, setLightbox] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const scrollToHash = () => {
+        const hash = window.location.hash.replace("#", "");
+        if (hash) {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      };
+
+      const timer = setTimeout(scrollToHash, 150);
+      window.addEventListener("hashchange", scrollToHash);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("hashchange", scrollToHash);
+      };
+    }
+  }, []);
 
   return (
     <>
@@ -457,7 +478,7 @@ export default function Contact() {
       </section>
 
       {/* ── TALKS & ENGAGEMENTS ────────────────────────── */}
-      <section className="py-24 border-b-[3px] border-[#0A192F]">
+      <section id="talks" className="py-24 border-b-[3px] border-[#0A192F] scroll-mt-[90px]">
         <div className="w-full max-w-[1280px] mx-auto px-5">
           <ScrollReveal>
             <MonoLabel color="#C0C0C0">Speaking & Community</MonoLabel>

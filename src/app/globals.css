@@ -116,13 +116,9 @@
 
 /* Custom cursor handling: hide default system cursor on devices with mouse/trackpad */
 @media (pointer: fine) {
-  body,
-  a,
-  button,
-  [role="button"],
-  select,
-  .brut-btn-press,
-  .brut-card {
+  *,
+  *::before,
+  *::after {
     cursor: none !important;
   }
 }

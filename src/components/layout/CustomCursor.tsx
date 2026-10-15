@@ -3,28 +3,24 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-interface PixelParticle {
+interface ClickRipple {
   id: number;
   x: number;
   y: number;
-  size: number;
-  color: string;
 }
 
 export default function CustomCursor() {
-  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [pos, setPos] = useState({ x: -200, y: -200 });
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isText, setIsText] = useState(false);
   const [isFinePointer, setIsFinePointer] = useState(false);
-  const [particles, setParticles] = useState<PixelParticle[]>([]);
+  const [ripples, setRipples] = useState<ClickRipple[]>([]);
 
-  const particleIdRef = useRef(0);
-  const lastPosRef = useRef({ x: 0, y: 0 });
+  const rippleIdRef = useRef(0);
 
   useEffect(() => {
-    // Check fine pointer (mouse / trackpad)
     const mediaQuery = window.matchMedia("(pointer: fine)");
     setIsFinePointer(mediaQuery.matches);
 
@@ -34,36 +30,14 @@ export default function CustomCursor() {
     mediaQuery.addEventListener("change", handleMediaChange);
 
     const handleMouseMove = (e: MouseEvent) => {
-      const { clientX: x, clientY: y } = e;
-      setPos({ x, y });
+      setPos({ x: e.clientX, y: e.clientY });
       if (!isVisible) setIsVisible(true);
 
-      // Check distance moved to spawn pixel particles
-      const dx = x - lastPosRef.current.x;
-      const dy = y - lastPosRef.current.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist > 18) {
-        lastPosRef.current = { x, y };
-
-        const colors = ["#FFFFFF", "#C0C0C0", "#708090", "#38BDF8"];
-        const newParticle: PixelParticle = {
-          id: ++particleIdRef.current,
-          x: x + (Math.random() * 8 - 4),
-          y: y + (Math.random() * 8 - 4) + 12,
-          size: Math.random() > 0.5 ? 4 : 3,
-          color: colors[Math.floor(Math.random() * colors.length)],
-        };
-
-        setParticles((prev) => [...prev.slice(-6), newParticle]);
-      }
-
-      // Check interactive targets
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
       const interactive = target.closest(
-        'a, button, [role="button"], input[type="submit"], input[type="button"], select, .brut-btn-press, [data-cursor="interactive"]'
+        'a, button, [role="button"], input[type="submit"], input[type="button"], select, .brut-btn-press, [data-cursor="interactive"], summary'
       );
       const textInput = target.closest(
         'input[type="text"], input[type="email"], textarea, [contenteditable="true"]'
@@ -73,7 +47,13 @@ export default function CustomCursor() {
       setIsText(!!textInput);
     };
 
-    const handleMouseDown = () => setIsClicking(true);
+    const handleMouseDown = (e: MouseEvent) => {
+      setIsClicking(true);
+      setRipples((prev) => [
+        ...prev.slice(-3),
+        { id: ++rippleIdRef.current, x: e.clientX, y: e.clientY },
+      ]);
+    };
     const handleMouseUp = () => setIsClicking(false);
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
@@ -94,165 +74,105 @@ export default function CustomCursor() {
     };
   }, [isVisible]);
 
-  // Clean up old particles
   useEffect(() => {
-    if (particles.length === 0) return;
-    const timer = setTimeout(() => {
-      setParticles((prev) => prev.slice(1));
-    }, 280);
-    return () => clearTimeout(timer);
-  }, [particles]);
+    if (ripples.length === 0) return;
+    const t = setTimeout(() => setRipples((prev) => prev.slice(1)), 450);
+    return () => clearTimeout(t);
+  }, [ripples]);
 
   if (!isFinePointer || !isVisible) return null;
 
+  /* Cursor sizing */
+  const SIZE = isText ? 20 : isHovered ? 38 : 32;
+  const scale = isClicking ? 0.82 : isHovered ? 1.15 : 1;
+
+  /* Hotspot: top-left tip of the arrow */
+  const offsetX = isText ? -SIZE / 2 : 0;
+  const offsetY = isText ? -SIZE / 2 : 0;
+
   return (
     <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden select-none">
-      {/* ── Pixel Particle Dust Trail ── */}
+
+      {/* ── Click Ripples ── */}
       <AnimatePresence>
-        {particles.map((p) => (
+        {ripples.map((r) => (
           <motion.div
-            key={p.id}
-            initial={{ opacity: 0.9, scale: 1 }}
-            animate={{ opacity: 0, scale: 0.4, y: p.y + 14 }}
+            key={r.id}
+            initial={{ scale: 0.2, opacity: 0.7 }}
+            animate={{ scale: 2.4, opacity: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: "linear" }}
+            transition={{ duration: 0.45, ease: [0.2, 0.8, 0.4, 1] }}
             style={{
               position: "fixed",
-              left: p.x,
-              top: p.y,
-              width: p.size,
-              height: p.size,
-              backgroundColor: p.color,
-              boxShadow: "1px 1px 0px #0A192F",
+              left: r.x - 14,
+              top: r.y - 14,
+              width: 28,
+              height: 28,
+              borderRadius: "50%",
+              border: "2px solid #0EA5E9",
+              backgroundColor: "rgba(14, 165, 233, 0.12)",
             }}
           />
         ))}
       </AnimatePresence>
 
-      {/* ── Pixel Cursor Graphic ── */}
+      {/* ── Cursor Element ── */}
       <div
         style={{
           position: "fixed",
-          left: pos.x,
-          top: pos.y,
-          transform: `translate(${isText ? "-50%" : "0"}, ${isText ? "-50%" : "0"}) scale(${
-            isClicking ? 0.88 : isHovered ? 1.12 : 1
-          })`,
-          transition: "transform 0.08s ease-out",
-          filter: "drop-shadow(2px 3px 0px rgba(10, 25, 47, 0.8))",
+          left: pos.x + offsetX,
+          top: pos.y + offsetY,
+          width: SIZE,
+          height: SIZE,
+          transformOrigin: isText ? "center center" : "top left",
+          transform: `scale(${scale})`,
+          transition: "transform 0.1s cubic-bezier(0.2, 0.8, 0.4, 1), width 0.1s, height 0.1s",
+          filter: "drop-shadow(0px 2px 6px rgba(14,165,233,0.5))",
         }}
       >
         {isText ? (
-          /* ── Pixel Text I-Beam ── */
-          <svg
-            width="12"
-            height="22"
-            viewBox="0 0 12 22"
-            fill="none"
-            style={{ shapeRendering: "crispEdges" }}
-          >
-            {/* Top bar */}
-            <rect x="1" y="0" width="10" height="2" fill="#0A192F" />
-            <rect x="2" y="1" width="8" height="2" fill="#FFFFFF" />
-            {/* Middle vertical */}
-            <rect x="4" y="2" width="4" height="18" fill="#0A192F" />
-            <rect x="5" y="2" width="2" height="18" fill="#FFFFFF" />
-            {/* Bottom bar */}
-            <rect x="1" y="20" width="10" height="2" fill="#0A192F" />
-            <rect x="2" y="19" width="8" height="2" fill="#FFFFFF" />
+          /* I-beam */
+          <svg width={SIZE} height={SIZE} viewBox="0 0 20 20" fill="none">
+            <path d="M5 2H15M10 2V18M5 18H15" stroke="#0EA5E9" strokeWidth="2.5" strokeLinecap="round" />
           </svg>
         ) : isHovered ? (
-          /* ── Pixel Pointing Hand (Hover / Interactive) ── */
-          <svg
-            width="28"
-            height="30"
-            viewBox="0 0 28 30"
-            fill="none"
-            style={{ shapeRendering: "crispEdges" }}
-          >
-            {/* Black Pixel Outline */}
-            {/* Index finger */}
-            <rect x="8" y="0" width="4" height="16" fill="#0A192F" />
-            <rect x="6" y="2" width="2" height="14" fill="#0A192F" />
-            <rect x="12" y="2" width="2" height="16" fill="#0A192F" />
-            {/* Middle finger */}
-            <rect x="14" y="6" width="4" height="12" fill="#0A192F" />
-            {/* Ring finger */}
-            <rect x="18" y="8" width="4" height="10" fill="#0A192F" />
-            {/* Pinky */}
-            <rect x="22" y="10" width="4" height="8" fill="#0A192F" />
-            {/* Palm & thumb */}
-            <rect x="2" y="12" width="6" height="10" fill="#0A192F" />
-            <rect x="0" y="14" width="4" height="6" fill="#0A192F" />
-            <rect x="4" y="20" width="22" height="8" fill="#0A192F" />
-
-            {/* White Pixel Fill */}
-            {/* Index finger fill */}
-            <rect x="8" y="2" width="4" height="14" fill="#FFFFFF" />
-            {/* Middle finger fill */}
-            <rect x="14" y="8" width="2" height="10" fill="#FFFFFF" />
-            {/* Ring finger fill */}
-            <rect x="18" y="10" width="2" height="8" fill="#FFFFFF" />
-            {/* Pinky fill */}
-            <rect x="22" y="12" width="2" height="6" fill="#FFFFFF" />
-            {/* Palm & thumb fill */}
-            <rect x="2" y="14" width="4" height="4" fill="#FFFFFF" />
-            <rect x="6" y="14" width="18" height="12" fill="#FFFFFF" />
-
-            {/* Accent Pixel Shade (Silver/Bone detail) */}
-            <rect x="10" y="4" width="2" height="10" fill="#F8F9FA" />
-            <rect x="18" y="22" width="6" height="4" fill="#C0C0C0" />
-            <rect x="6" y="24" width="18" height="2" fill="#708090" />
+          /* Flat hand pointer */
+          <svg width={SIZE} height={SIZE} viewBox="0 0 28 32" fill="none">
+            <path
+              d="M8.5 2C7.4 2 6.5 2.9 6.5 4V14.5L5 13.5C4 12.8 2.6 13.1 2 14.1C1.4 15.1 1.7 16.4 2.7 17.1L8.5 24.5C9.8 26.2 11.8 27.2 14 27.2H19.5C22.8 27.2 25.5 24.5 25.5 21.2V15.5C25.5 14.4 24.6 13.5 23.5 13.5C23.2 13.5 22.9 13.6 22.6 13.7C22.2 12.8 21.3 12.2 20.2 12.2C19.8 12.2 19.4 12.3 19.1 12.5C18.6 11.6 17.6 11 16.5 11C16.1 11 15.7 11.1 15.4 11.3V4C15.4 2.9 14.5 2 13.4 2H8.5Z"
+              fill="white"
+              stroke="#0EA5E9"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path d="M15.4 15.5V19.5" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M19.1 16V20" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M22.6 16.5V20.5" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         ) : (
-          /* ── Pixel Arrow Pointer (Default) ── */
-          <svg
-            width="24"
-            height="26"
-            viewBox="0 0 24 26"
-            fill="none"
-            style={{ shapeRendering: "crispEdges" }}
-          >
-            {/* Outer Dark Pixel Outline */}
-            <rect x="0" y="0" width="2" height="18" fill="#0A192F" />
-            <rect x="2" y="0" width="2" height="2" fill="#0A192F" />
-            <rect x="2" y="2" width="2" height="2" fill="#0A192F" />
-            <rect x="4" y="4" width="2" height="2" fill="#0A192F" />
-            <rect x="6" y="6" width="2" height="2" fill="#0A192F" />
-            <rect x="8" y="8" width="2" height="2" fill="#0A192F" />
-            <rect x="10" y="10" width="2" height="2" fill="#0A192F" />
-            <rect x="12" y="12" width="2" height="2" fill="#0A192F" />
-            <rect x="14" y="14" width="2" height="2" fill="#0A192F" />
-            <rect x="16" y="16" width="2" height="2" fill="#0A192F" />
-            {/* Horizontal crossbar */}
-            <rect x="2" y="16" width="14" height="2" fill="#0A192F" />
-            {/* Diagonal stem outline */}
-            <rect x="8" y="16" width="4" height="2" fill="#0A192F" />
-            <rect x="10" y="18" width="4" height="2" fill="#0A192F" />
-            <rect x="12" y="20" width="4" height="2" fill="#0A192F" />
-            <rect x="14" y="22" width="4" height="2" fill="#0A192F" />
-            <rect x="14" y="24" width="2" height="2" fill="#0A192F" />
-            <rect x="12" y="24" width="2" height="2" fill="#0A192F" />
-            <rect x="10" y="22" width="2" height="2" fill="#0A192F" />
-            <rect x="8" y="20" width="2" height="2" fill="#0A192F" />
-            <rect x="6" y="18" width="2" height="2" fill="#0A192F" />
-
-            {/* Inner White Pixel Fill */}
-            <rect x="2" y="2" width="2" height="14" fill="#FFFFFF" />
-            <rect x="4" y="6" width="2" height="10" fill="#FFFFFF" />
-            <rect x="6" y="8" width="2" height="8" fill="#FFFFFF" />
-            <rect x="8" y="10" width="2" height="6" fill="#FFFFFF" />
-            <rect x="10" y="12" width="2" height="4" fill="#FFFFFF" />
-            <rect x="12" y="14" width="2" height="2" fill="#FFFFFF" />
-            {/* Stem Fill */}
-            <rect x="8" y="18" width="2" height="2" fill="#FFFFFF" />
-            <rect x="10" y="20" width="2" height="2" fill="#FFFFFF" />
-            <rect x="12" y="22" width="2" height="2" fill="#FFFFFF" />
-
-            {/* Subtle silver highlight pixel */}
-            <rect x="2" y="4" width="2" height="2" fill="#F8F9FA" />
-            <rect x="4" y="8" width="2" height="2" fill="#C0C0C0" />
-            <rect x="6" y="12" width="2" height="2" fill="#C0C0C0" />
+          /* ── Blue play-button arrow cursor (matches uploaded image) ── */
+          <svg width={SIZE} height={SIZE} viewBox="0 0 32 36" fill="none">
+            {/* Outer stroke/glow triangle */}
+            <path
+              d="M4 2L28 16L4 30V2Z"
+              fill="none"
+              stroke="#38BDF8"
+              strokeWidth="3"
+              strokeLinejoin="round"
+            />
+            {/* Inner fill triangle — darker blue */}
+            <path
+              d="M6 5L25 16L6 27V5Z"
+              fill="url(#cursorGrad)"
+              strokeLinejoin="round"
+            />
+            <defs>
+              <linearGradient id="cursorGrad" x1="6" y1="5" x2="26" y2="16" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#0EA5E9" />
+                <stop offset="100%" stopColor="#1D4ED8" />
+              </linearGradient>
+            </defs>
           </svg>
         )}
       </div>

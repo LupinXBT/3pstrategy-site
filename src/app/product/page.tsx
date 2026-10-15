@@ -30,7 +30,7 @@ const deliverables = [
   },
   {
     num: "03",
-    label: "2-3months plan",
+    label: "2-3 months plan",
     desc: "What to fix first, second and third, with the score each fix is expected to move.",
   },
   {
@@ -68,6 +68,10 @@ const scopeDimensions = [
     id: "01",
     title: "Product",
     accent: "#F8F9FA",
+    question: "Is there a market that will pay?",
+    desc: "Who buys, why they choose you over the alternatives, how the business makes money, and how much room it has to grow.",
+    cta: "What the assessment covers",
+    href: "/product#deliverables",
     items: [
       "Value proposition vs. evidence of demand",
       "Technical architecture and dependency risk",
@@ -81,6 +85,10 @@ const scopeDimensions = [
     id: "02",
     title: "Process",
     accent: "#C0C0C0",
+    question: "Can it deliver at a profit?",
+    desc: "Day-to-day operations, margins on each sale, how decisions are made, and how the business finds and keeps customers.",
+    cta: "How the assessment runs",
+    href: "/process",
     items: [
       "Financial controls, treasury and spend authority",
       "Delivery workflow, QA and release discipline",
@@ -94,6 +102,10 @@ const scopeDimensions = [
     id: "03",
     title: "People",
     accent: "#708090",
+    question: "Can the team run and grow it?",
+    desc: "Leadership, the people around the owner, how the team works together, and the community of customers and partners around the business.",
+    cta: "Who it is for",
+    href: "/people",
     items: [
       "Governance, decision rights and accountability",
       "Key-person risk and team capability",
@@ -119,7 +131,7 @@ const waysToWork = [
   {
     id: "02",
     title: "Fix sprint",
-    desc: "Hands-on work on the top items in the 2-3months then a re-score.",
+    desc: "Hands-on work on the top items in the 2-3 months plan then a re-score.",
     bestFor: "Businesses that scored Developing or Gap on one pillar",
     length: "2–3 months",
     cta: "Ask about a sprint",
@@ -129,11 +141,11 @@ const waysToWork = [
   {
     id: "03",
     title: "Fractional",
-    desc: "Ongoing re-scoring and advice for a portfolio, a loan book or a programme cohort.",
+    desc: "Ongoing re-scoring and advice for a portfolio, a loan book or a programme cohort. Supported with additional services (see below).",
     bestFor: "Investors, lenders and programmes tracking several businesses",
     length: "Monthly or quarterly",
     cta: "Discuss fractional support",
-    href: "/contact",
+    href: "/contact#talks",
     primary: false,
   },
 ];
@@ -316,35 +328,61 @@ export default function Product() {
 
           <div className="pl-5 md:pl-[calc(50vw-620px)] pb-10">
             <motion.div style={{ x }} className="flex gap-8 w-max pr-[30vw]">
-              {scopeDimensions.map(({ id, title, accent, items }) => (
+              {scopeDimensions.map(({ id, title, accent, question, desc, cta, href, items }) => (
                 <div
                   key={id}
-                  className="w-[85vw] max-w-[450px] shrink-0 p-8 border-[3px] border-[#0A192F] bg-[#112240] flex flex-col brut-card"
+                  className="w-[85vw] max-w-[460px] shrink-0 p-8 border-[3px] border-[#0A192F] bg-[#112240] flex flex-col justify-between brut-card"
                   style={{ boxShadow: `8px 8px 0 0 ${accent}` }}
                 >
-                  <div className="flex items-baseline gap-4 mb-6">
-                    <span
-                      className="font-bold text-[3rem] leading-none"
-                      style={{ fontFamily: "var(--font-sora), sans-serif", color: accent }}
+                  <div>
+                    <div className="flex items-baseline gap-4 mb-4">
+                      <span
+                        className="font-bold text-[3rem] leading-none"
+                        style={{ fontFamily: "var(--font-sora), sans-serif", color: accent }}
+                      >
+                        {id}
+                      </span>
+                      <MonoLabel color="#708090">Dimension {id}</MonoLabel>
+                    </div>
+                    <h3
+                      className="font-bold text-[1.5rem] uppercase tracking-tight text-[#F8F9FA] mb-2"
+                      style={{ fontFamily: "var(--font-sora), sans-serif" }}
                     >
-                      {id}
-                    </span>
-                    <MonoLabel color="#708090">Dimension {id}</MonoLabel>
+                      {title}
+                    </h3>
+                    <p
+                      className="font-bold text-[1.05rem] text-[#F8F9FA] mb-3 leading-snug"
+                      style={{ fontFamily: "var(--font-sora), sans-serif" }}
+                    >
+                      {question}
+                    </p>
+                    <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-6">
+                      {desc}
+                    </p>
+
+                    <div className="border-t border-[#1a3158] pt-4 mb-2">
+                      <p className="font-mono text-[10px] tracking-widest uppercase text-[#708090] mb-3">
+                        Key Areas Assessed
+                      </p>
+                      <ul className="space-y-2.5 list-none p-0 m-0">
+                        {items.map((item) => (
+                          <li key={item} className="flex gap-3 font-mono text-[12px] text-[#C0C0C0] leading-relaxed">
+                            <span className="shrink-0" style={{ color: accent }}>▸</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <h3
-                    className="font-bold text-[1.5rem] uppercase tracking-tight text-[#F8F9FA] mb-6"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                  >
-                    {title}
-                  </h3>
-                  <ul className="space-y-3 list-none p-0 m-0 flex-1">
-                    {items.map((item) => (
-                      <li key={item} className="flex gap-3 font-mono text-[13px] text-[#C0C0C0] leading-relaxed">
-                        <span className="shrink-0" style={{ color: accent }}>▸</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+
+                  <div className="pt-5 border-t border-[#1a3158] mt-6">
+                    <Link
+                      href={href}
+                      className="inline-flex items-center gap-2 font-mono text-[12px] tracking-[0.12em] uppercase text-[#F8F9FA] hover:text-[#C0C0C0] transition-colors"
+                    >
+                      {cta} →
+                    </Link>
+                  </div>
                 </div>
               ))}
             </motion.div>

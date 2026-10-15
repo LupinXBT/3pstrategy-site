@@ -257,13 +257,12 @@ export default function Home() {
                       style={{ fontFamily: "var(--font-sora), sans-serif" }}>01</span>
                 <h3 className="font-bold text-[1.75rem] uppercase tracking-tight text-[#F8F9FA] mb-1"
                     style={{ fontFamily: "var(--font-sora), sans-serif" }}>Product</h3>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-[#708090] mb-4">Value that survives the market</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-[#708090] mb-4">Is there a market that will pay?</p>
                 <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-6 max-w-[45ch]">
-                  Is the value proposition, the technology behind it, product–market fit and the user feedback loop
-                  actually sound — or does it only look sound in a pitch deck?
+                  Who buys, why they choose you over the alternatives, how the business makes money, and how much room it has to grow.
                 </p>
                 <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#F8F9FA] group-hover:tracking-[0.2em] transition-all">
-                  The audit and services →
+                  What the assessment covers →
                 </span>
               </Link>
             </StaggerItem>
@@ -279,13 +278,12 @@ export default function Home() {
                       style={{ fontFamily: "var(--font-sora), sans-serif" }}>02</span>
                 <h3 className="font-bold text-[1.75rem] uppercase tracking-tight text-[#F8F9FA] mb-1"
                     style={{ fontFamily: "var(--font-sora), sans-serif" }}>Process</h3>
-                <p className="font-mono text-[11px] tracking-widest uppercase text-[#708090] mb-4">A system that runs without heroics</p>
+                <p className="font-mono text-[11px] tracking-widest uppercase text-[#708090] mb-4">Can it deliver at a profit?</p>
                 <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-6">
-                  Are financial controls, delivery workflow, data handling and security documented and repeatable —
-                  or do they live in one person&apos;s head and one shared drive?
+                  Day-to-day operations, margins on each sale, how decisions are made, and how the business finds and keeps customers.
                 </p>
                 <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#F8F9FA] group-hover:tracking-[0.2em] transition-all">
-                  How the audit works →
+                  How the assessment runs →
                 </span>
               </Link>
             </StaggerItem>
@@ -303,13 +301,12 @@ export default function Home() {
                   <div>
                     <h3 className="font-bold text-[1.75rem] uppercase tracking-tight text-[#F8F9FA] mb-1"
                         style={{ fontFamily: "var(--font-sora), sans-serif" }}>People</h3>
-                    <p className="font-mono text-[11px] tracking-widest uppercase text-[#708090] mb-4">Governance that is real, not paper</p>
+                    <p className="font-mono text-[11px] tracking-widest uppercase text-[#708090] mb-4">Can the team run and grow it?</p>
                     <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-4 max-w-[72ch]">
-                      Does the private roadmap match what investors are told? Who is a single point of failure?
-                      What does the community actually think beneath the surface metrics?
+                      Leadership, the people around the owner, how the team works together, and the community of customers and partners around the business.
                     </p>
                     <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#F8F9FA] group-hover:tracking-[0.2em] transition-all">
-                      Who this is for →
+                      Who it is for →
                     </span>
                   </div>
                 </div>

@@ -51,7 +51,7 @@ export default function Header() {
               3P Strategy
             </span>
             <span className="block font-mono text-[9px] tracking-[0.15em] uppercase text-[#C0C0C0]">
-              Due Diligence
+              Audit/Assessment
             </span>
           </div>
         </Link>
