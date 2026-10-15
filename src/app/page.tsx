@@ -108,10 +108,10 @@ export default function Home() {
             >
 
               <h1
-                className="font-bold text-[clamp(2.6rem,4.8vw,4.8rem)] leading-[1.03] tracking-tight text-[#F8F9FA] mb-6 max-w-[18ch]"
+                className="font-bold text-[clamp(2.6rem,4.8vw,4.8rem)] leading-[1.03] tracking-tight text-[#F8F9FA] mb-6 max-w-[22ch]"
                 style={{ fontFamily: "var(--font-sora), sans-serif" }}
               >
-                <TextReveal text="A clear answer on whether a business can grow." />
+                <TextReveal text="A clear answer on whether a business can grow and attract investment." />
               </h1>
 
               <p className="text-[#8892A4] text-[clamp(1rem,1.15vw,1.15rem)] max-w-[54ch] leading-relaxed mb-10 font-light" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
