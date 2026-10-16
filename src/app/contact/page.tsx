@@ -74,43 +74,43 @@ const testimonials = [
 const talksAndEngagements = [
   {
     image: "/talks/emerging tech.jpg",
-    tag: "Emerging Tech",
-    title: "ICT Summit",
+    tag: "ICT Summit",
+    title: "Conducted Seminar about Emerging Technologies and its use cases to Local Government",
   },
   {
     image: "/talks/youth leaders.jpg",
-    tag: "Youth Leaders",
-    title: "Youth Camp",
+    tag: "Youth Camp",
+    title: "Shared a talk about technology and innovation to youth leaders",
   },
   {
     image: "/talks/hackmaster.jpg",
-    tag: "Hackmaster",
-    title: "Hackathon",
+    tag: "Hackathon",
+    title: "Hackmaster during an AI startup and pitching competition",
   },
   {
     image: "/talks/Coinw.jpg",
-    tag: "CoinW",
-    title: "Community Meetup",
+    tag: "Community Meetup",
+    title: "Provided market insight and outlook during CoinW community meetup.",
   },
   {
     image: "/talks/Startup 101.jpg",
-    tag: "Startup 101",
-    title: "Entrepreneurial Workshop",
+    tag: "Entrepreneurial Workshop",
+    title: "Business Workshop and Startup 101 to Senior High School students",
   },
   {
     image: "/talks/Organizer Train.jpg",
-    tag: "Organizer TRAIN",
-    title: "AI Conference",
+    tag: "AI Conference",
+    title: "Organizer and facilitator of TRAIN (Transformative AI Network) 2026",
   },
   {
     image: "/talks/Host binance.jpg",
-    tag: "Host Binance",
-    title: "Event Organizer",
+    tag: "Event Organizer",
+    title: "Host and organizer of Binance local community meetup.",
   },
   {
     image: "/talks/Cyberesec.jpg",
-    tag: "Cybersecurity",
-    title: "Blockchain Event",
+    tag: "Blockchain Event",
+    title: "Speaker on cybersafety and security for students and professionals.",
   },
 ];
 
@@ -507,6 +507,11 @@ export default function Contact() {
                       alt={title}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 block"
                     />
+                    <div className="absolute top-3 left-3 bg-[#0A192F]/90 border border-[#1a3158] px-2.5 py-1">
+                      <span className="font-mono text-[9px] tracking-[0.16em] uppercase text-[#F8F9FA]">
+                        {tag}
+                      </span>
+                    </div>
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <p className="font-mono text-[12px] text-[#C0C0C0] leading-relaxed m-0 group-hover:text-[#F8F9FA] transition-colors">
