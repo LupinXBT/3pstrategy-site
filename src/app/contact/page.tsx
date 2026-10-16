@@ -75,42 +75,42 @@ const talksAndEngagements = [
   {
     image: "/talks/emerging tech.jpg",
     tag: "Emerging Tech",
-    title: "Conducted Seminar about Emerging Technologies and its use cases to Local Government",
+    title: "ICT Summit",
   },
   {
     image: "/talks/youth leaders.jpg",
     tag: "Youth Leaders",
-    title: "Shared a talk about technology and innovation to youth leaders",
+    title: "Youth Camp",
   },
   {
     image: "/talks/hackmaster.jpg",
     tag: "Hackmaster",
-    title: "Hackmaster during an AI startup and pitching competition",
+    title: "Hackathon",
   },
   {
     image: "/talks/Coinw.jpg",
     tag: "CoinW",
-    title: "Provided market insight and outlook during CoinW community meetup.",
+    title: "Community Meetup",
   },
   {
     image: "/talks/Startup 101.jpg",
     tag: "Startup 101",
-    title: "Business Workshop and Startup 101 to Senior High School students",
+    title: "Entrepreneurial Workshop",
   },
   {
     image: "/talks/Organizer Train.jpg",
     tag: "Organizer TRAIN",
-    title: "Organizer and facilitator of TRAIN (Transformative AI Network) 2026",
+    title: "AI Conference",
   },
   {
     image: "/talks/Host binance.jpg",
     tag: "Host Binance",
-    title: "Host and organizer of Binance local community meetup.",
+    title: "Event Organizer",
   },
   {
     image: "/talks/Cyberesec.jpg",
     tag: "Cybersecurity",
-    title: "Speaker on cybersafety and security for students and professionals.",
+    title: "Blockchain Event",
   },
 ];
 
