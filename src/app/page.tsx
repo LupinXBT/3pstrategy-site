@@ -658,11 +658,11 @@ export default function Home() {
             </h2>
           </ScrollReveal>
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-0" stagger={0.1}>
+          <StaggerContainer className="grid md:grid-cols-2 gap-0" stagger={0.1}>
             {/* Ready to scope it */}
             <StaggerItem>
               <div
-                className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
+                className="p-8 md:p-10 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
                 style={{ marginRight: "-3px", boxShadow: "8px 8px 0 0 #C0C0C0" }}
               >
                 <div>
@@ -687,10 +687,10 @@ export default function Home() {
               </div>
             </StaggerItem>
 
-            {/* Still evaluating */}
+            {/* Check the services */}
             <StaggerItem>
               <div
-                className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
+                className="p-8 md:p-10 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
                 style={{ marginRight: "-3px" }}
               >
                 <div>
@@ -698,51 +698,32 @@ export default function Home() {
                     className="font-bold text-[1.25rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
                     style={{ fontFamily: "var(--font-sora), sans-serif" }}
                   >
-                    Still evaluating
+                    Check the services
                   </h3>
                   <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8">
-                    See a redacted sample report before you commit.
+                    Explore what the 3Ps audit covers, fix sprints, fractional advisory and additional services.
                   </p>
                 </div>
                 <Link
-                  href="/contact"
+                  href="/product"
                   className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase
                     bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] hover:bg-[#1a3158] transition-colors w-full"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  Get a sample report →
-                </Link>
-              </div>
-            </StaggerItem>
-
-            {/* Have a question first */}
-            <StaggerItem>
-              <div
-                className="p-8 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
-                style={{ marginRight: "-3px" }}
-              >
-                <div>
-                  <h3
-                    className="font-bold text-[1.25rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                  >
-                    Have a question first
-                  </h3>
-                  <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8">
-                    Describe your business in a few lines and get a reply by email.
-                  </p>
-                </div>
-                <Link
-                  href="/contact#message"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase
-                    bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] hover:bg-[#1a3158] transition-colors w-full"
-                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  Send a brief →
+                  Check the services <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </StaggerItem>
           </StaggerContainer>
+
+          <div className="mt-8 text-center">
+            <p className="font-mono text-[12px] text-[#708090]">
+              Have a question first?{" "}
+              <Link href="/contact#message" className="text-[#F8F9FA] underline hover:text-[#C0C0C0] transition-colors">
+                Send a brief →
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
     </>
