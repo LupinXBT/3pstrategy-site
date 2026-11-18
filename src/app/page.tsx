@@ -658,12 +658,12 @@ export default function Home() {
             </h2>
           </ScrollReveal>
 
-          <StaggerContainer className="grid md:grid-cols-2 gap-0" stagger={0.1}>
+          <StaggerContainer className="grid md:grid-cols-1 gap-0" stagger={0.1}>
             {/* Ready to scope it */}
             <StaggerItem>
               <div
-                className="p-8 md:p-10 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
-                style={{ marginRight: "-3px", boxShadow: "8px 8px 0 0 #C0C0C0" }}
+                className="p-8 md:p-10 border-[3px] border-[#0A192F] bg-[#112240] brut-card flex flex-col justify-between"
+                style={{ boxShadow: "8px 8px 0 0 #C0C0C0" }}
               >
                 <div>
                   <h3
@@ -684,34 +684,6 @@ export default function Home() {
                 >
                   Book a 30-minute call <ArrowRight className="w-4 h-4" />
                 </a>
-              </div>
-            </StaggerItem>
-
-            {/* Check the services */}
-            <StaggerItem>
-              <div
-                className="p-8 md:p-10 border-[3px] border-[#0A192F] bg-[#112240] h-full brut-card flex flex-col justify-between"
-                style={{ marginRight: "-3px" }}
-              >
-                <div>
-                  <h3
-                    className="font-bold text-[1.25rem] uppercase tracking-tight text-[#F8F9FA] mb-3"
-                    style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                  >
-                    Check the services
-                  </h3>
-                  <p className="font-mono text-[13px] text-[#C0C0C0] leading-relaxed mb-8">
-                    Explore what the 3Ps audit covers, fix sprints, fractional advisory and additional services.
-                  </p>
-                </div>
-                <Link
-                  href="/product"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 font-bold text-[12px] tracking-[0.1em] uppercase
-                    bg-transparent text-[#F8F9FA] border-[3px] border-[#708090] hover:border-[#F8F9FA] hover:bg-[#1a3158] transition-colors w-full"
-                  style={{ fontFamily: "var(--font-sora), sans-serif" }}
-                >
-                  Check the services <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
             </StaggerItem>
           </StaggerContainer>

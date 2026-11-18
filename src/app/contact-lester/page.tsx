@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,5 +6,20 @@ export const metadata: Metadata = {
 };
 
 export default function ContactLesterPage() {
-  redirect("https://lupinxiv.my.canva.site/contact-lester");
+  return (
+    <iframe
+      src="https://lupinxiv.my.canva.site/contact-lester"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        border: "none",
+        zIndex: 9999,
+      }}
+      title="Contact Lester"
+      allowFullScreen
+    />
+  );
 }
