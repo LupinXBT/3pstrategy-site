@@ -16,6 +16,10 @@ export default function Header() {
     }
   }, [pathname]);
 
+  if (pathname === "/contact-lester") {
+    return null;
+  }
+
   const handleNavClick = (href: string, active: boolean, e: React.MouseEvent) => {
     if (active) {
       e.preventDefault();

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -26,7 +29,12 @@ function TelegramIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export default function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  if (pathname === "/contact-lester") {
+    return null;
+  }
 
   return (
     <footer className="border-t-[3px] border-[#112240] bg-[#0A192F] pt-16 pb-8">
